@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+// import App from '@screen/App';
 import App from './screens/App';
+
 import {
   createBrowserRouter,
   RouterProvider,
