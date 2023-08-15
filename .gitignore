@@ -22,8 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-./BackEnd/compiled/*
 node_modules
 
 ./**/package-lock.json
 package-lock.json
+BackEnd/compiled/*
