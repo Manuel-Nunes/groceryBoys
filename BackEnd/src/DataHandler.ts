@@ -1,7 +1,8 @@
 import fs from "fs";
 
 export class DataHandler {
-  private self: DataHandler;
+  private static self: DataHandler;
+  
   private dataStore: Object;
   private saveSuccessful:boolean = false;
   private dataStorePath: string = '../data/GroceryData.json';
@@ -11,8 +12,7 @@ export class DataHandler {
 
     const oldData = this.dataStore;
 
-    if (dataStore)
-    {
+    if (dataStore) {
       this.dataStore = dataStore;
     }
 
@@ -45,7 +45,7 @@ export class DataHandler {
     return returns;
   }
 
-  getInstance(){
+  static getInstance(){
     if (this.self) {
       return this.self
     }

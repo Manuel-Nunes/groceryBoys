@@ -17,3 +17,8 @@ export interface GroceryList {
   SharedTo: number[],
   Items: Item[]
 }
+
+export interface CompleteDataClump {
+  Users: User[],
+  GroceryLists: GroceryList[]
+}
