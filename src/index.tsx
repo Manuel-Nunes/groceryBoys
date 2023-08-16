@@ -7,7 +7,8 @@ import App from './screens/App';
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router-dom";
+} from 'react-router-dom';
+import { ContextHandler } from './components/ContextHandler';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,14 +16,16 @@ const root = ReactDOM.createRoot(
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
   },
 ]);
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    
+    <ContextHandler>
+      <RouterProvider router={ router } />
+
+    </ContextHandler>
   </React.StrictMode>
 );
