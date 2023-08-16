@@ -4,7 +4,9 @@
     "moduleResolution": "NodeNext",
     "target": "ES2020",
     "sourceMap": true,
-    "outDir": "./compiled"
+    "outDir": "./compiled",
+    "types": ["./src/types.d.ts"],
+    "alwaysStrict": true
   },
   "include": ["src/**/*"]
 }

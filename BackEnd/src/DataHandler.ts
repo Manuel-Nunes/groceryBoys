@@ -6,9 +6,15 @@ export class DataHandler {
   private saveSuccessful:boolean = false;
   private dataStorePath: string = '../data/GroceryData.json';
 
-  public saveData(){
-
+  public saveData(dataStore){
     this.saveSuccessful = false;
+
+    const oldData = this.dataStore;
+
+    if (dataStore)
+    {
+      this.dataStore = dataStore;
+    }
 
     try {
       fs.writeFile(this.dataStorePath, JSON.stringify(this.dataStore, null, 2), (err) => {
@@ -16,6 +22,7 @@ export class DataHandler {
         if (err) {
 
           console.warn("Error Encountered in saving Datastore", err.message)
+          this.dataStore = oldData;
 
           return;
         }
@@ -25,16 +32,24 @@ export class DataHandler {
 
     } catch (error: any) {
 
+      this.dataStore= oldData;
       console.warn("Failed to initiate datastore save", error)
     }
-
   }
 
+  public getData(){
+
+    const returns = {...this.dataStore}
+    Object.freeze(returns)
+
+    return returns;
+  }
 
   getInstance(){
     if (this.self) {
       return this.self
     }
+
     this.self = new DataHandler();
   }
 

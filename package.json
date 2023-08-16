@@ -1,13 +1,14 @@
 {
   "name": "groceryboys",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "Wrapper Package for Backend and Frontend of the Grocery Boys PWA",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "installBE": "cd ./BackEnd && npm install",
     "installFE": "cd ./FrontEnd && npm install",
-    "install": "npm run installBE && npm run installFE"
+    "install": "npm run installBE && npm run installFE",
+    "runBE": "cd ./BackEnd && npm start"
   },
   "keywords": [],
   "author": "",
