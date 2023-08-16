@@ -1,0 +1,27 @@
+{
+  "Users":[
+    {
+      "UsersID":0,
+      "UserEmail":"test@gmail.com",
+      "Friends":[
+
+      ]
+    },
+    {
+      "UsersID": 1,
+      "UserEmail": "manueln@bbd.co.za",
+      "Friends": [
+        0
+      ]
+    }
+  ],
+  "GroceryLists":[
+    {
+      "Owner":0,
+      "SharedTo":[],
+      "Items":[
+
+      ]
+    }
+  ]
+}
