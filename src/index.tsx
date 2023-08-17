@@ -27,4 +27,6 @@ root.render(
       <RouterProvider router={ router } />
     </ContextHandler>
   </React.StrictMode>
+  // <RouterProvider router={ router } />
+
 );

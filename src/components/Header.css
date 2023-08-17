@@ -1,0 +1,15 @@
+.HeaderHolder{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: purple;
+}
+
+.HeaderBodyHolder{
+  width: 100%;
+  background-color: aquamarine;
+}
+
+.BurgerButton{
+  padding: 5px;
+}

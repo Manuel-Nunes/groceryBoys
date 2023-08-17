@@ -21,10 +21,15 @@ export function LoadFile (){
   const { setContext } = useContext(GLContext);
 
   const getFile = async ()=>{
-    const [handle] = await window.showOpenFilePicker(pickerOpts);
-    const file = await handle.getFile();
-    const content: AllData = JSON.parse(await file.text()) ;
-    setContext(content);
+    try {
+      const [handle] = await window.showOpenFilePicker(pickerOpts);
+      const file = await handle.getFile();
+      const content: AllData = JSON.parse(await file.text()) ;
+      setContext(content);  
+    } catch (error) {
+      console.log('No List Selected',error);
+    }
+    
   };
 
   return (
