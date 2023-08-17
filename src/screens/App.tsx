@@ -4,13 +4,15 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {AuthProvider} from '../hooks/useAuth';
 import AuthenticatedRoute from '../components/auth/AuthenticatedRoute';
 import LoginForm from './Login';
+import RegisterPage from './Register';
 
 function App() {
   return (
       <AuthProvider>
         <BrowserRouter>
         <Routes>
-        <Route path="/login" element={<LoginForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/" element = {
               <AuthenticatedRoute>
               <HomePage/>

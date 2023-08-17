@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 type CredentialsKeys = keyof Credentials;
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [credentials, setCredentials] = useState<Credentials>({
     email: '',
     password: ''
@@ -15,7 +15,7 @@ export default function LoginPage() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    await auth.logIn(credentials);
+    await auth.signUp(credentials);
   }
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
@@ -31,7 +31,7 @@ export default function LoginPage() {
     });
   }
 
-  const gotoSignUpPage = () => navigate("/register");    
+  const gotoLoginPage = () => navigate("/login");    
 
   return (
       <form onSubmit={handleSubmit}>
@@ -52,11 +52,11 @@ export default function LoginPage() {
               required
           />
         </label>
-        <button type="submit">Log in</button>
+        <button type="submit">Register</button>
         <p>
-            Don't have an account?{" "}
-            <span className='link' onClick={gotoSignUpPage}>
-                Sign up
+            Already have an account?{" "}
+            <span className='link' onClick={gotoLoginPage}>
+                Login
             </span>
         </p>
       </form>

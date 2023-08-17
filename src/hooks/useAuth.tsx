@@ -87,15 +87,21 @@ function useProvideAuth() {
           password,
         }: Credentials
     ): Promise<User | null> {
-      const result = await CognitoAuth.signUp({
-        username: email,
-        password
-      });
-      if (result.user != null && result.userConfirmed) {
-        console.log(`signup successful: ${JSON.stringify(result.user)}`)
-        setUser(await cognitoUserToUser(result.user));
-        return user;
-      }
+        try {
+            const result = await CognitoAuth.signUp({
+                username: email,
+                password
+              });
+              if (result.user != null && result.userConfirmed) {
+                console.log(`signup successful: ${JSON.stringify(result.user)}`)
+                setUser(await cognitoUserToUser(result.user));
+                return user;
+              }
+        } catch(err) {
+            console.log(`signup failed: ${JSON.stringify(err)}`)
+        }
+      
+      
       setUser(null);
       return null;
     }
