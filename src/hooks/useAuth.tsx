@@ -50,13 +50,7 @@ function useProvideAuth() {
     const [user, setUser] = useState<User | null>(null);
     const [authInProgress, setAuthInProgress] = useState(true);
   
-    /** Sign-in using email and password. */
-    async function logIn(
-        {
-          email,
-          password,
-        }: Credentials
-    ): Promise<User | string> {
+    async function logIn({email, password}: Credentials): Promise<User | string> {
       const cognitoUser: CognitoUserWithChallenge = await CognitoAuth.signIn(email, password);
       if (cognitoUser.challengeName) {
         return cognitoUser.challengeName;
@@ -66,49 +60,23 @@ function useProvideAuth() {
       return user!!;
     }
   
-    /**
-     * Log-out.
-     *
-     * @param global - if `true` the user will be logged out of all devices.
-     */
+
     async function logOut(global = false) {
       setUser(null);
       await CognitoAuth.signOut({global});
     }
   
-    /**
-     * Sign-up using email, password, name and country.
-     *
-     * If we get back a confirmed user then we return a {@link User}, `null` otherwise.
-     */
-    async function signUp(
-        {
-          email,
-          password,
-        }: Credentials
-    ): Promise<User | null> {
-        try {
-            const result = await CognitoAuth.signUp({
-                username: email,
-                password
-              });
-              if (result.user != null && result.userConfirmed) {
-                console.log(`signup successful: ${JSON.stringify(result.user)}`)
-                setUser(await cognitoUserToUser(result.user));
-                return user;
-              }
-        } catch(err) {
-            console.log(`signup failed: ${JSON.stringify(err)}`)
-        }
-      
-      
-      setUser(null);
-      return null;
+    async function signUp({email, password}: Credentials) {
+      const result = await CognitoAuth.signUp({
+          username: email,
+          password
+        });
     }
-  
-    /**
-     * Loads the currently logged in {@link User}.
-     */
+
+    async function verifyEmail(email: string, code: string) {
+      return await CognitoAuth.confirmSignUp(email, code);
+    }
+
     async function getUser() {
       try {
         const user: CognitoUserWithChallenge = await CognitoAuth.currentAuthenticatedUser();
@@ -158,6 +126,7 @@ function useProvideAuth() {
       logIn,
       logOut,
       signUp,
+      verifyEmail,
     };
   }
   

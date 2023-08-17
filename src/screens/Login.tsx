@@ -16,6 +16,7 @@ export default function LoginPage() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     await auth.logIn(credentials);
+    navigate("/");
   }
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
