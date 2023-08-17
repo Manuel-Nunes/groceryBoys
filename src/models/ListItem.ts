@@ -1,12 +1,6 @@
-interface ListData {
-  description: string;
-  quantity: number;
-  store: string;
-  price: number;
-  purchased: number;
-}
+import { ListData } from '../types/types';
 
-export class ListItem {
+export class ListItem implements ListData {
   description: string;
   quantity: number;
   store: string;

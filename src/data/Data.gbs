@@ -1,0 +1,28 @@
+{
+  "GroceryList":{
+    "ListItems":[
+      {
+        "description" : "Soap",
+        "quantity" : "5",
+        "store" : "Checkers",
+        "price" : "6.99",
+        "purchased" : "1"
+      },
+      {
+        "description": "Bread",
+        "quantity": "6",
+        "store": "chEcKers  ",
+        "price": "20.00",
+        "purchased": "5"
+      },
+      {
+        "description": "Meat",
+        "quantity": "7",
+        "store": "Check ers",
+        "price": "99.99",
+        "purchased": "0"
+      }
+
+    ]
+  }
+}

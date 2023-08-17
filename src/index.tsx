@@ -25,7 +25,6 @@ root.render(
   <React.StrictMode>
     <ContextHandler>
       <RouterProvider router={ router } />
-
     </ContextHandler>
   </React.StrictMode>
 );
