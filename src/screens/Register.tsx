@@ -12,7 +12,8 @@ export default function RegisterPage() {
   });
   const [OTP, setOTP] = useState("");
   const [verifyProcess, setVerifyProcess] = useState(false);
-
+  const [error, setError] = useState("");
+  const [enabled, setDisabled] = useState(true);
 
   const auth = useAuth();
   const navigate = useNavigate();
@@ -21,17 +22,70 @@ export default function RegisterPage() {
     event.preventDefault();
     try {
         await auth.signUp(credentials);
+        setError("");
         setVerifyProcess(true);
-    } catch (err) {
-        console.group(err);
+    } catch (err: any) {
+        if(err.name === "InvalidParameterException") {
+          setError("Password must have at least 8 characters, 1  number and 1 special character");
+        } else if (err.name === "UsernameExistsException") {
+          setError("An account with this email already exists.");
+        }
     }
   }
 
   async function verifyAccount(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    try{
       await auth.verifyEmail(credentials.email, OTP);
       navigate("/login");
+    } catch (err: any) {
+      if(err.name === "CodeMismatchException") {
+        setError("Invalid OTP");
+      }
+    }
+      
   };
+
+  function checkSpecialCharacters(password: string): boolean {
+    let specialCharacters = RegExp("[!-\/:-@[-`{-~]");
+    return specialCharacters.test(password);
+  }
+
+  function checkLength(password: string): boolean {
+    return password.length >= 8;
+  }
+
+  function checkCapitals(password: string): boolean {
+    let specialCharacters = RegExp("[A-Z]");
+    return specialCharacters.test(password);
+  }
+
+  function validatePassword(event: ChangeEvent<HTMLInputElement>) {
+    const {
+      name,
+      value
+    } = event.target;
+    const key = name as CredentialsKeys;
+    setCredentials({
+      ...credentials,
+      [key]: value,
+    });
+    const hasSpecial: boolean = checkSpecialCharacters(value);
+    const hasLength: boolean = checkLength(value);
+    const hasCapitals: boolean  = checkCapitals(value);
+    let errorMessage: string = "Password must contain";
+    errorMessage += !hasLength ? " at least 8 characters," : "";
+    errorMessage += !hasCapitals ? " at least 1 uppercase," : "";
+    errorMessage += !hasSpecial ? " at least 1 special character," : "";
+    if (!hasSpecial || !hasCapitals || !hasLength) {
+      setError(errorMessage.slice(0, -1));
+    } else {
+      if (credentials.email.length !== 0) 
+        setDisabled(false);
+      setError("");
+    }
+
+  }
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     const {
@@ -50,7 +104,10 @@ export default function RegisterPage() {
 
   return (
     verifyProcess == false ? (
-      <form onSubmit={handleSubmit}>
+      <section>
+        <img src={require("./shopping-basket.png")} style={{width:100}}/>
+        <h1>Register</h1>
+        <form onSubmit={handleSubmit}>
         <label>Email:
           <input
               name="email"
@@ -64,21 +121,24 @@ export default function RegisterPage() {
               name="password"
               type="password"
               value={credentials.password}
-              onChange={handleInputChange}
+              onChange={validatePassword}
               required
           />
         </label>
-        <button type="submit">Register</button>
+        <button disabled={enabled} type="submit">Register</button>
+      </form>
+      <label className="errorLabel">{error}</label>
         <p>
             Already have an account?{" "}
             <span className='link' onClick={gotoLoginPage}>
                 Login
             </span>
         </p>
-      </form>
+      </section>
+      
     ) : (
         <form onSubmit={verifyAccount}>
-          Enter the OTP:
+          Enter the OTP sent to your email:
           <input
             type="text"
             value={OTP}
@@ -86,6 +146,7 @@ export default function RegisterPage() {
           />
           <br />
           <button type="submit">Verify</button>
+          <label className="errorLabel">{error}</label>
         </form>
     )
   );

@@ -10,13 +10,19 @@ export default function LoginPage() {
     email: '',
     password: ''
   });
+  const [error, setError] = useState("");
   const auth = useAuth();
   const navigate = useNavigate();
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    await auth.logIn(credentials);
-    navigate("/");
+    try{
+      await auth.logIn(credentials);
+      navigate("/");
+    } catch (err) {
+      setError(`Incorrect username/password`);
+    }
+    
   }
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
@@ -35,31 +41,34 @@ export default function LoginPage() {
   const gotoSignUpPage = () => navigate("/register");    
 
   return (
-      <form onSubmit={handleSubmit}>
+    <section>
+      <img src={require("./shopping-basket.png")} style={{width:100}}/>
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
         <label>Email:
           <input
-              name="email"
-              value={credentials.email}
-              onChange={handleInputChange}
-              required
-          />
+            name="email"
+            value={credentials.email}
+            onChange={handleInputChange}
+            required />
         </label>
         <label>Password:
           <input
-              name="password"
-              type="password"
-              value={credentials.password}
-              onChange={handleInputChange}
-              required
-          />
+            name="password"
+            type="password"
+            value={credentials.password}
+            onChange={handleInputChange}
+            required />
         </label>
         <button type="submit">Log in</button>
+        <label className="errorLabel">{error}</label>
         <p>
-            Don't have an account?{" "}
-            <span className='link' onClick={gotoSignUpPage}>
-                Sign up
-            </span>
+          Don't have an account?{" "}
+          <span className='link' onClick={gotoSignUpPage}>
+            Sign up
+          </span>
         </p>
       </form>
+    </section>
   );
 }
