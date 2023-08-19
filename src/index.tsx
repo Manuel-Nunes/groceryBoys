@@ -1,31 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-// import App from '@screen/App';
+import { AuthProvider } from './hooks/useAuth';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AuthenticatedRoute from './components/auth/AuthenticatedRoute';
+import RegisterPage from './screens/Register';
+import LoginForm from './screens/Login';
 import App from './screens/App';
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
 import { ContextHandler } from './components/ContextHandler';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-  },
-]);
 
 root.render(
   <React.StrictMode>
-    <ContextHandler>
-      <RouterProvider router={ router } />
-    </ContextHandler>
+    <AuthProvider>
+      <ContextHandler>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route 
+              path="/"
+              element = {
+                <AuthenticatedRoute>
+                  <App/>
+                </AuthenticatedRoute>
+              }>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </ContextHandler>
+    </AuthProvider>
   </React.StrictMode>
   // <RouterProvider router={ router } />
 
