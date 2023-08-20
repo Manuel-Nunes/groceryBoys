@@ -32,6 +32,7 @@ async function cognitoUserToUser( cognitoUser: CognitoUser ): Promise<User> {
     ] ),
   );
   console.log( JSON.stringify( attrs ) );
+
   return {
     email: attrs.email, 
   };
@@ -42,6 +43,7 @@ const AuthContext = createContext<Auth | null>( null );
 
 export function AuthProvider( { children }: { children: ReactNode } ) {
   const auth = useProvideAuth();
+
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
 
@@ -74,6 +76,7 @@ function useProvideAuth() {
     }
     setUser( await cognitoUserToUser( cognitoUser ) );
     setAuthInProgress( false );
+
     return user!;
   }
   
@@ -136,7 +139,8 @@ function useProvideAuth() {
       }
     },
     () => listener != null && Hub.remove( 'auth', listener ),
-    [],
+    [
+    ],
   );
   
   return {

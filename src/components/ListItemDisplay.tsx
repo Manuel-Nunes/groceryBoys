@@ -1,5 +1,5 @@
-import './ListItemDisplay.css'
-import { ListData } from '../types/types'
+import './ListItemDisplay.css';
+import { ListData } from '../types/types';
 import React from 'react';
 
 interface listDataProps{
@@ -47,7 +47,7 @@ function ListItemDisplay(
       <button className='quanityButton' id='decreaseButton'></button>
       <button className='quanityButton' id='increaseButton' onClick={increaseClick}></button>
     </div>
-  )
+  );
 }
 
-export default ListItemDisplay
+export default ListItemDisplay;

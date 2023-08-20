@@ -68,6 +68,7 @@ export default function RegisterPage() {
 
   function checkSpecialCharacters( password: string ): boolean {
     const specialCharacters = RegExp( '[!-/:-@[-`{-~]' );
+
     return specialCharacters.test( password );
   }
 
@@ -77,6 +78,7 @@ export default function RegisterPage() {
 
   function checkCapitals( password: string ): boolean {
     const specialCharacters = RegExp( '[A-Z]' );
+
     return specialCharacters.test( password );
   }
 

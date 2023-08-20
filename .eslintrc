@@ -47,13 +47,13 @@
       "error",
       2
     ],
-    "array-element-newline": [
+    "semi": "error",
+    "padding-line-between-statements": [
       "error",
-      "always"
-    ],
-    "array-bracket-newline": [
-      "error",
-      "always"
-    ]
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return" }
+  ]
   }
 }

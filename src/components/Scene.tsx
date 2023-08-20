@@ -1,4 +1,4 @@
-import './Scene.css'
+import './Scene.css';
 import Header from './Header';
 
 interface SceneProps {
