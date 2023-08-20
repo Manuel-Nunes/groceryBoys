@@ -2,6 +2,13 @@
   "GroceryList":{
     "ListItems":[
       {
+        "description" : "Handy Andy Kitchen cleaner",
+        "quantity" : "5",
+        "store" : "Checkers",
+        "price" : "21.99",
+        "purchased" : "1"
+      },
+      {
         "description" : "Soap",
         "quantity" : "5",
         "store" : "Checkers",
@@ -22,7 +29,6 @@
         "price": "99.99",
         "purchased": "0"
       }
-
     ]
   }
 }

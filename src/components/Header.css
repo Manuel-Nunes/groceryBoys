@@ -1,15 +1,20 @@
-.HeaderHolder{
+.headerHolder{
   display: flex;
   justify-content: center;
-  width: 100%;
-  background-color: purple;
+  padding: 1vh 1vw;
 }
 
-.HeaderBodyHolder{
+.headerBodyHolder{
   width: 100%;
-  background-color: aquamarine;
 }
 
-.BurgerButton{
-  padding: 5px;
+.burgerButton{
+  aspect-ratio: 1/1;
+  width: 10vw;
+  background-color: transparent;
+  border: none;
+  background-image: url('../Resources/burger-menu.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
 }

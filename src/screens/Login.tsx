@@ -1,48 +1,63 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { Credentials, useAuth } from '../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+// import './App.css'
+import {
+  ChangeEvent, FormEvent, useState 
+} from 'react';
+import {
+  Credentials, useAuth 
+} from '../hooks/useAuth';
+import {
+  useNavigate 
+} from 'react-router-dom';
 
 
 type CredentialsKeys = keyof Credentials;
 
 export default function LoginPage() {
-  const [credentials, setCredentials] = useState<Credentials>({
+  const [
+    credentials,
+    setCredentials
+  ] = useState<Credentials>( {
     email: '',
     password: ''
-  });
-  const [error, setError] = useState('');
+  } );
+  const [
+    error,
+    setError
+  ] = useState( '' );
   const auth = useAuth();
   const navigate = useNavigate();
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit( event: FormEvent<HTMLFormElement> ) {
     event.preventDefault();
     try{
-      await auth.logIn(credentials);
-      navigate('/');
-    } catch (err) {
-      setError('Incorrect username/password');
+      await auth.logIn( credentials );
+      navigate( '/' );
+    } catch ( err ) {
+      setError( 'Incorrect username/password' );
     }
     
   }
 
-  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+  function handleInputChange( event: ChangeEvent<HTMLInputElement> ) {
     const {
       name,
       value
     } = event.target;
 
     const key = name as CredentialsKeys;
-    setCredentials({
+    setCredentials( {
       ...credentials,
       [key]: value,
-    });
+    } );
   }
 
-  const gotoSignUpPage = () => navigate('/register');    
+  const gotoSignUpPage = () => navigate( '/register' );    
 
   return (
     <section>
-      <img src={require('./shopping-basket.png')} style={{ width:100 }}/>
+      <img src={require( '../Resources/shoppingBasket.png' )} style={{
+        width:100 
+      }}/>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>Email:

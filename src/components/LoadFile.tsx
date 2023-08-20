@@ -1,16 +1,24 @@
-import { useContext } from 'react';
-import { GLContext } from './ContextHandler';
-import { AllData } from '../types/types';
+import {
+  useContext 
+} from 'react';
+import {
+  GLContext 
+} from './ContextHandler';
+import {
+  AllData 
+} from '../types/types';
 import '../global.css';
 
-export function LoadFile (){
+export function LoadFile () {
 
   const pickerOpts = {
     types: [
       {
         description: 'Grocery Boys File',
         accept: {
-          'text/gbs': ['.gbs'],
+          'text/gbs': [
+            '.gbs'
+          ],
         },
       },
     ],
@@ -18,16 +26,18 @@ export function LoadFile (){
     multiple: false,
   };
 
-  const { setContext } = useContext(GLContext);
+  const { setContext } = useContext( GLContext );
 
   const getFile = async ()=>{
     try {
-      const [handle] = await window.showOpenFilePicker(pickerOpts);
+      const [
+        handle
+      ] = await window.showOpenFilePicker( pickerOpts );
       const file = await handle.getFile();
-      const content: AllData = JSON.parse(await file.text()) ;
-      setContext(content);  
-    } catch (error) {
-      console.log('No List Selected',error);
+      const content: AllData = JSON.parse( await file.text() ) ;
+      setContext( content );  
+    } catch ( error ) {
+      console.log( 'No List Selected',error );
     }
     
   };

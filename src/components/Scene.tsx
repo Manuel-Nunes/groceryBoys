@@ -1,23 +1,28 @@
-import './Scene.css';
+import './Scene.css'
 import Header from './Header';
 
 interface SceneProps {
-  children?: React.ReactNode[];
+  children?: React.ReactNode
   gridTemplate?: string;
 }
 
-function Scene(props: SceneProps){
+function Scene( 
+  {
+    children,
+    gridTemplate
+  }: SceneProps 
+) {
   return (
     <div id="bigBody">
       <Header></Header>
-      <div id='internalBody' style={
+      <div id="internalBody" style={
         { 
-          display: (props.gridTemplate)? 'grid': 'flex',
-          gridTemplateAreas: props?.gridTemplate
+          display: ( gridTemplate )? 'grid': 'flex',
+          gridTemplateAreas: gridTemplate
         }
       }>
         {
-          props.children
+          children
         }
       </div>
     </div>

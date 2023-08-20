@@ -1,10 +1,10 @@
 import './Header.css';
 
-function Header(){
+function Header() {
   return (
-    <div className='HeaderHolder'>
-      <div className='HeaderBodyHolder'></div>
-      <button className='BurgerButton'>IBurger</button>
+    <div className='headerHolder'>
+      <div className='headerBodyHolder'></div>
+      <button className='burgerButton'></button>
     </div>
   );
 }

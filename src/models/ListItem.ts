@@ -1,4 +1,6 @@
-import { ListData } from '../types/types';
+import {
+  ListData 
+} from '../types/types';
 
 export class ListItem implements ListData {
   description: string;
@@ -7,7 +9,7 @@ export class ListItem implements ListData {
   price: number;
   purchased: number;
 
-  constructor(data: ListData) {
+  constructor( data: ListData ) {
     this.description = data.description;
     this.quantity = data.quantity;
     this.store = data.store;

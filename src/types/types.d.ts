@@ -1,7 +1,7 @@
 export interface ListData {
+  store: string;
   description: string;
   quantity: number;
-  store: string;
   price: number;
   purchased: number;
 }
