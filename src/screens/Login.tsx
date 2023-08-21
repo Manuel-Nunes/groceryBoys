@@ -55,9 +55,9 @@ export default function LoginPage() {
 
   return (
     <section>
-      <img src={require( '../Resources/shoppingBasket.png' )} style={{
+      {/* <img src={require( '../Resources/shoppingBasket.png' )} style={{
         width:100 
-      }}/>
+      }}/> */}
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>Email:

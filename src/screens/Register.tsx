@@ -127,9 +127,9 @@ export default function RegisterPage() {
   return (
     verifyProcess == false ? (
       <section>
-        <img src={ require( '../Resources/shoppingBasket.png' )} style={{
+        {/* <img src={ require( '../Resources/shoppingBasket.png' )} style={{
           width:100 
-        }}/>
+        }}/> */}
         <h1>Register</h1>
         <form onSubmit={handleSubmit}>
           <label>Email:

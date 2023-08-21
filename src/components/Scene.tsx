@@ -1,5 +1,22 @@
-import './Scene.css';
 import Header from './Header';
+import { styled } from 'styled-components';
+
+const BigBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+  height: 100vh;
+  background-color: var(--regularBackgroundColor);
+  color: var(--fontColor);
+`;
+
+const InternalBody = styled.div`
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 
 interface SceneProps {
   children?: React.ReactNode
@@ -13,9 +30,9 @@ function Scene(
   }: SceneProps 
 ) {
   return (
-    <div id="bigBody">
+    <BigBody>
       <Header></Header>
-      <div id="internalBody" style={
+      <InternalBody style={
         { 
           display: ( gridTemplate )? 'grid': 'flex',
           gridTemplateAreas: gridTemplate
@@ -24,8 +41,8 @@ function Scene(
         {
           children
         }
-      </div>
-    </div>
+      </InternalBody>
+    </BigBody>
   );
 }
 

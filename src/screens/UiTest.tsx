@@ -18,9 +18,20 @@ function UiTest() {
             listData={value}
             increaseClick={ ()=>{
               const temp = {...context};
-              temp.GroceryList.ListItems[index].quantity++;
+              if ( temp.GroceryList.ListItems[index].purchased < temp.GroceryList.ListItems[index].quantity )
+              {
+                temp.GroceryList.ListItems[index].purchased++;
+                setContext( temp );
+              }
+            }}
+
+            decreaseClick={ ()=>{
+              const temp = {...context};
+              temp.GroceryList.ListItems[index].purchased--;
               setContext( temp );
-            }} />;
+            }}
+
+          />;
         } )
       }
       
