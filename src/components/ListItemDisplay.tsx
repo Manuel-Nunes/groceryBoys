@@ -38,7 +38,11 @@ const ItemPriceDisplay = styled.div`
   width: 100%;
 `;
 
-const QuanityButton = styled.button`
+interface ButtonProps{
+  $enabled:boolean // Needs to be transient name 
+}
+
+const QuanityButton = styled.button<ButtonProps>`
   height: 70%;
   aspect-ratio: 1/1;
   width: auto;
@@ -48,23 +52,17 @@ const QuanityButton = styled.button`
   background-repeat: no-repeat;
   background-size: 100% 100%;
   align-self: center;
+  ${ ( {$enabled} ) => $enabled ? '' : 'filter: grayscale(100%);' }
+  `;
+
+const DecreaseButton = styled( QuanityButton )`
+  grid-area: Decrease;
+  background-image: url('../Resources/ReduceItem.svg');
 `;
 
-// const DecreaseButton = styled( QuanityButton )`
-//   grid-area: Decrease;
-//   background-image: url('../Resources/ReduceItem.svg');
-//   ${ props => props.decreaseEnable? '' : 'filter: grayscale(100%);' }
-// `;
-
-interface IncreaseButtonProps{
-  increaseEnabled:boolean
-}
-
-// const IncreaseButton = styled<IncreaseButtonProps>( QuanityButton )`
-const IncreaseButton = withProps<IncreaseButtonProps>()( QuanityButton )`
+const IncreaseButton = styled( QuanityButton )`
   grid-area: Increase;
   background-image: url('../Resources/IncreaseItem.svg');
-  ${ props => props.increaseEnabled? '' : 'filter: grayscale(100%);' }
 `;
 
 interface listDataProps{
@@ -73,8 +71,8 @@ interface listDataProps{
   BoughtPercentageFade?:number,
   increaseClick: ()=>void,
   decreaseClick: ()=>void,
-  increaseEnabled: boolean,
-  decreaseEnable: boolean
+  increaseEnabled?: boolean,
+  decreaseEnable?: boolean
 }
 
 function ListItemDisplay( 
@@ -117,9 +115,9 @@ function ListItemDisplay(
         }
       </ItemPriceDisplay>
 
-      <DecreaseButton onClick={decreaseClick}/>
+      <DecreaseButton onClick={decreaseClick} $enabled={ decreaseEnable }/>
       
-      <IncreaseButton onClick={increaseClick}/>
+      <IncreaseButton onClick={increaseClick} $enabled={ increaseEnabled } />
 
     </ListDataBigBody>
   );
