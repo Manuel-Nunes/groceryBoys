@@ -8,6 +8,7 @@ import {
   AllData 
 } from '../types/types';
 import '../global.css';
+import useStores from '../hooks/useStores';
 
 export function LoadFile () {
 
@@ -27,6 +28,7 @@ export function LoadFile () {
   };
 
   const { setContext } = useContext( GLContext );
+  const { loadAllStores } = useStores();
 
   const getFile = async ()=>{
     try {
@@ -35,11 +37,10 @@ export function LoadFile () {
       ] = await window.showOpenFilePicker( pickerOpts );
       const file = await handle.getFile();
       const content: AllData = JSON.parse( await file.text() ) ;
-      setContext( content );  
+      setContext( content ); 
     } catch ( error ) {
       console.log( 'No List Selected',error );
     }
-    
   };
 
   return (

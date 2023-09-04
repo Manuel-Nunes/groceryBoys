@@ -1,13 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import ListItemDisplay from '../components/ListItemDisplay';
 import Scene from '../components/Scene';
 import { GLContext } from '../components/ContextHandler';
 import { LoadFile } from '../components/LoadFile';
-import useGetStoreNames from '../hooks/useGetStoreNames';
+import { StoreTab } from '../components/StoreTab';
+import useStores from '../hooks/useStores';
 
 function UiTest() {
-  const {context,setContext} = useContext( GLContext );
-  const storeNames = useGetStoreNames();
+  const { context, setContext, storeContext} = useContext( GLContext );
+  const { loadAllStores } = useStores();
 
   return (
     <Scene>
@@ -35,16 +36,16 @@ function UiTest() {
         } )
       }
       
-      <LoadFile/>
       {
-        storeNames.map( ( value,index ): JSX.Element=>{
-          return (
-            <p key={ 'disp'+index}>
-              { value }
-            </p>
-          );
+        storeContext.stores.map( ( value,index )=>{
+          return <StoreTab
+            key={`disp${ index }`}
+            {...value}/>;
         } )
       }
+      
+      <LoadFile/>
+      
     </Scene>
   );
 }
