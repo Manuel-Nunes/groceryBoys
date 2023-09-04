@@ -25,7 +25,14 @@
       {
         "description": "Meat",
         "quantity": "7",
-        "store": "Check ers",
+        "store": "Hooters",
+        "price": "99.99",
+        "purchased": "0"
+      },
+      {
+        "description": "Meat",
+        "quantity": "7",
+        "store": "PickNPay",
         "price": "99.99",
         "purchased": "0"
       }

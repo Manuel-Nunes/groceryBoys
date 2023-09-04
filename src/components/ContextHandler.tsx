@@ -2,7 +2,7 @@ import React, {
   useState 
 } from 'react';
 import {
-  AllData 
+  AllData, Store, StoreContext 
 } from '../types/types';
 
 const defaultValue:AllData ={
@@ -12,9 +12,15 @@ const defaultValue:AllData ={
   }
 };
 
+const defaultStores: StoreContext = {
+  stores: []
+};
+
 const tempLook = {
   context: defaultValue,
-  setContext: ( value: AllData ) => { console.warn( 'this is bad if you see this', value );}
+  setContext: ( value: AllData ) => { console.warn( 'this is bad if you see this', value );},
+  storeContext: defaultStores,
+  setStoreContext: ( value: StoreContext ) => { console.warn( 'this is bad if you see this', value );}
 };
 
 export const GLContext = React.createContext( tempLook );
@@ -30,10 +36,17 @@ export const ContextHandler: React.FC<PropTypes> = ( { children } ) =>{
     setContext
   ] = useState( defaultValue );
 
+  const [
+    storeContext,
+    setStoreContext
+  ] = useState( defaultStores );
+
   return (
     <GLContext.Provider value={{
       context,
-      setContext 
+      setContext,
+      storeContext,
+      setStoreContext 
     }}>
       {children}
     </GLContext.Provider>
