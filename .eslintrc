@@ -22,7 +22,7 @@
   "rules": {
     "linebreak-style": [
       "error",
-      "windows"
+      "unix"
     ],
     "template-curly-spacing": [
       "error",
@@ -39,10 +39,10 @@
         "error",
         "always"
     ],
-    // "quotes": [
-    //     "error",
-    //     "any"
-    // ],
+    "quotes": [
+        "error",
+        "single"
+    ],
     "indent": [
       "error",
       2
