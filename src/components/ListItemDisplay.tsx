@@ -15,11 +15,15 @@ const ListDataBigBody = styled.div`
 const ItemNameDisplay = styled.div`
   font-size: 1.5rem;
   font-weight: 300;
+
 `;
 
 const ItemName = styled( ItemNameDisplay )`
   grid-area: TitleBar;
   width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const ItemShop = styled.div`
@@ -36,6 +40,9 @@ const ItemPriceDisplay = styled.div`
   align-self: center;
   grid-area: Price;
   width: 100%;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 interface ButtonProps{
@@ -111,7 +118,7 @@ function ListItemDisplay(
       <ItemPriceDisplay>
         R {' '}
         {
-          listData?.price * listData.purchased
+          Math.ceil( listData?.price * listData.purchased )
         }
       </ItemPriceDisplay>
 

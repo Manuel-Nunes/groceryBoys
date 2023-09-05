@@ -1,4 +1,3 @@
-import Header from './Header';
 import { styled } from 'styled-components';
 
 const BigBody = styled.div`
@@ -31,7 +30,7 @@ function Scene(
 ) {
   return (
     <BigBody>
-      <Header></Header>
+      {/* <Header></Header> */}
       <InternalBody style={
         { 
           display: ( gridTemplate )? 'grid': 'flex',

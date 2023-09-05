@@ -1,4 +1,5 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
+
 import ListItemDisplay from '../components/ListItemDisplay';
 import Scene from '../components/Scene';
 import { GLContext } from '../components/ContextHandler';
