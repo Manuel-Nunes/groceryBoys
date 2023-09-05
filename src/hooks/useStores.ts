@@ -23,8 +23,8 @@ function useStores(): useStoresResponse {
   const loadAllStores = () => {
 
     const tempStores = storeContext.stores.slice();
-    console.log( JSON.stringify( context.GroceryList ) );
-    context.GroceryList?.ListItems?.map( ( value ) => {
+
+    context.ListItems.map( ( value ) => {
 
       const standardizedStore = standardizeName( value.store );
       const storeExists = tempStores.find( ( store ) => { return ( store.value === standardizedStore ); } );
