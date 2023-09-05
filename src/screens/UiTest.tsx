@@ -14,22 +14,22 @@ function UiTest() {
   return (
     <Scene>
       {
-        context.GroceryList.ListItems.map( ( value, index )=>{
+        context.ListItems.map( ( value, index )=>{
           return <ListItemDisplay 
             key={index}
             listData={value}
             increaseClick={ ()=>{
               const temp = {...context};
-              if ( temp.GroceryList.ListItems[index].purchased < temp.GroceryList.ListItems[index].quantity )
+              if ( temp.ListItems[index].purchased < temp.ListItems[index].quantity )
               {
-                temp.GroceryList.ListItems[index].purchased++;
+                temp.ListItems[index].purchased++;
                 setContext( temp );
               }
             }}
 
             decreaseClick={ ()=>{
               const temp = {...context};
-              temp.GroceryList.ListItems[index].purchased--;
+              temp.ListItems[index].purchased--;
               setContext( temp );
             }}
 
