@@ -1,19 +1,15 @@
-interface ListData {
+import {
+  ListData 
+} from '../types/types';
+
+export class ListItem implements ListData {
   description: string;
   quantity: number;
   store: string;
   price: number;
-  purchased: boolean;
-}
+  purchased: number;
 
-export class ListItem {
-  description: string;
-  quantity: number;
-  store: string;
-  price: number;
-  purchased: boolean;
-
-  constructor(data: ListData) {
+  constructor( data: ListData ) {
     this.description = data.description;
     this.quantity = data.quantity;
     this.store = data.store;

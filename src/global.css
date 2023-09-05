@@ -1,0 +1,14 @@
+:root{
+  --regularBackgroundColor: #013220;
+  --fontColor: white;
+  --purchasedBack: rgb(68, 101, 22);
+  --remainBack: rgb(126, 64, 13);
+
+}
+
+.DefaultButton{
+  background-color: cyan;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 20px 0 20px 0;
+}

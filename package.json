@@ -7,22 +7,29 @@
     "@types/node": "^16.18.40",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.26",
+    "@types/wicg-file-system-access": "^2020.9.6",
     "amazon-cognito-identity-js": "^6.3.2",
+    "eslint": "^8.47.0",
+    "eslint-plugin-react": "^7.33.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
     "react-scripts": "^5.0.1",
+    "styled-components": "^6.0.0",
     "typescript": "^4.1.6",
     "use-async-effect": "^2.2.7"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npx eslint --ext .tsx,.ts src/ --fix"
   },
   "eslintConfig": {
     "extends": [
-      "react-app"
+      "react-app",
+      ".eslintrc"
     ]
   },
   "browserslist": {
@@ -36,8 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint": "^8.47.0"
   }
 }

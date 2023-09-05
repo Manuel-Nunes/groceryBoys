@@ -18,9 +18,23 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types/types.d.ts"
+    ],
+    
+    "paths": {
+      "Resources/*": ["./public/Resources/*"]
+    },
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "newLine": "lf",
+    "outDir": "./dist"
   },
   "include": [
-    "src"
+    "src",
+    "public"
   ],
+  
 }
