@@ -43,7 +43,7 @@ root.render(
             </Route>
             <Route path="/list" element={
               <AuthenticatedRoute>
-                <App />
+                <UiTest />
               </AuthenticatedRoute>
             }>
             </Route>

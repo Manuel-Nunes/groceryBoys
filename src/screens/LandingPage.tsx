@@ -1,28 +1,20 @@
 import '../global.css';
 
-import {Credentials, useAuth} from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { LoadFile } from '../components/LoadFile';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { GLContext } from '../components/ContextHandler';
 
 export default function LandingPage() {
   const navigate = useNavigate();
-  const {context, storeContext, setStoreContext} = useContext( GLContext );
+  const {context, storeContext, setContext} = useContext( GLContext );
 
 
   async function handleCreate() {
+    context.ListItems.length = 0;
+    storeContext.stores.length = 0;
+    setContext( context );
     navigate( '/list' );
-  }
-
-  async function handleOpen() {
-    // TODO
-    // 1. Open file
-    // 2. Read file and load into context
-    // 3. navigate
-    console.log( `context: ${ JSON.stringify( context ) }` );
-    console.log( `Store context: ${ JSON.stringify( storeContext ) }` );
-
   }
 
   return (
@@ -32,8 +24,6 @@ export default function LandingPage() {
       <ul className="btnList">
         <li><button className='DefaultButton' onClick={handleCreate}>Create List</button></li>
         <li><LoadFile/></li>
-        <li><button className='DefaultButton' onClick={handleOpen}>Check Context</button></li>
-
       </ul>
     </section>
   );

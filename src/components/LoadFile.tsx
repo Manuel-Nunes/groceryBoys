@@ -9,8 +9,10 @@ import {
 } from '../types/types';
 import '../global.css';
 import useStores from '../hooks/useStores';
+import { useNavigate } from 'react-router-dom';
 
 export function LoadFile () {
+  const navigate = useNavigate();
 
   const pickerOpts = {
     types: [
@@ -38,12 +40,13 @@ export function LoadFile () {
       const file = await handle.getFile();
       const content: GroceryList = JSON.parse( await file.text() ) ;
       setContext( content ); 
+      navigate( '/list' );
     } catch ( error ) {
       console.log( 'No List Selected',error );
     }
   };
 
   return (
-    <button className={'DefaultButton'} onClick={getFile}>Load FIle</button>
+    <button className={'DefaultButton'} onClick={getFile}>Load File</button>
   );
 }
