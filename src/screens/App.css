@@ -1,4 +1,4 @@
-body{
+/* body{
   background-color: #013220;
   color: white;
   display: flex;
@@ -45,17 +45,12 @@ input{
   display: block;
   float: left;
 }
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #72C100;
-  color: #fff;
-  border: none;
-  border-radius: 6rem;
-  cursor: pointer;
-  margin-top: 1rem;
+.btnList {
+  list-style-type: none;  
+  display: flex; 
+  flex-direction: column; 
 }
+
 
 button:disabled,
 button[disabled]{
@@ -68,4 +63,4 @@ button[disabled]{
   color: red;
   max-width: 255px;
   font-size: small;
-}
+} */

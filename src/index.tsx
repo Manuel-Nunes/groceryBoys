@@ -18,7 +18,10 @@ import {
 import AuthenticatedRoute from './components/auth/AuthenticatedRoute';
 import RegisterPage from './screens/Register';
 import LoginForm from './screens/Login';
+import App from './screens/App';
+
 import UiTest from './screens/UiTest';
+import LandingPage from './screens/LandingPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById( 'root' ) as HTMLElement
@@ -32,21 +35,21 @@ root.render(
           <Routes>
             <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route 
-              path="/"
-              element = {
-                <UiTest/>
-
-                // <AuthenticatedRoute>
-                //   <UiTest/>
-                // </AuthenticatedRoute>
-              }>
+            <Route path="/" element={
+              <AuthenticatedRoute>
+                <LandingPage />
+              </AuthenticatedRoute>
+            }>
+            </Route>
+            <Route path="/list" element={
+              <AuthenticatedRoute>
+                <App />
+              </AuthenticatedRoute>
+            }>
             </Route>
           </Routes>
         </BrowserRouter>
       </ContextHandler>
     </AuthProvider>
   </React.StrictMode>
-  // <RouterProvider router={ router } />
-
 );

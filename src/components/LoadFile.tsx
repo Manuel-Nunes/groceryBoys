@@ -37,6 +37,7 @@ export function LoadFile () {
       ] = await window.showOpenFilePicker( pickerOpts );
       const file = await handle.getFile();
       const content: AllData = JSON.parse( await file.text() ) ;
+      console.log( JSON.stringify ( content ) );
       setContext( content ); 
     } catch ( error ) {
       console.log( 'No List Selected',error );
@@ -44,6 +45,6 @@ export function LoadFile () {
   };
 
   return (
-    <button className={'DefaultButton'} onClick={getFile}>Awe gamer</button>
+    <button className={'DefaultButton'} onClick={getFile}>Load FIle</button>
   );
 }

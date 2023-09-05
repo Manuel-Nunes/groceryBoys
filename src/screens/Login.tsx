@@ -1,4 +1,5 @@
 // import './App.css'
+import '../global.css';
 import {
   ChangeEvent, FormEvent, useState 
 } from 'react';
@@ -75,7 +76,7 @@ export default function LoginPage() {
             onChange={handleInputChange}
             required />
         </label>
-        <button type="submit">Log in</button>
+        <button className='DefaultButton' type="submit">Log in</button>
         <label className="errorLabel">{error}</label>
         <p>
           Don't have an account?{' '}
