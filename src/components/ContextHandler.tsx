@@ -2,14 +2,14 @@ import React, {
   useState 
 } from 'react';
 import {
-  AllData, Store, StoreContext 
+  Store, 
+  GroceryList,
+  StoreContext 
 } from '../types/types';
 
-const defaultValue:AllData ={
-  GroceryList:{
-    ListItems: [
-    ]
-  }
+const defaultValue:GroceryList ={
+  ListItems: [
+  ]
 };
 
 const defaultStores: StoreContext = {
@@ -18,7 +18,7 @@ const defaultStores: StoreContext = {
 
 const tempLook = {
   context: defaultValue,
-  setContext: ( value: AllData ) => { console.warn( 'this is bad if you see this', value );},
+  setContext: ( value: GroceryList ) => { console.warn( 'this is bad if you see this', value );},
   storeContext: defaultStores,
   setStoreContext: ( value: StoreContext ) => { console.warn( 'this is bad if you see this', value );}
 };
