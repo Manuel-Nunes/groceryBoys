@@ -17,7 +17,3 @@ export interface StoreContext {
 export interface GroceryList {
   ListItems: ListData[]
 }
-
-export interface AllData {
-  GroceryList: GroceryList
-}

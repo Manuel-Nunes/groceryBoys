@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import ListItemDisplay from '../components/ListItemDisplay';
 import Scene from '../components/Scene';
 import { GLContext } from '../components/ContextHandler';
@@ -10,7 +10,7 @@ import { Tabs } from '../components/Tabs';
 
 function UiTest() {
   const { context, setContext, storeContext} = useContext( GLContext );
-  const { loadAllStores, filterByStore } = useStores();
+  const { filterByStore } = useStores();
 
   const [store, setStore]= useState<Store | null>();
 
@@ -30,16 +30,16 @@ function UiTest() {
             listData={value}
             increaseClick={ ()=>{
               const temp = {...context};
-              if ( temp.GroceryList.ListItems[index].purchased < temp.GroceryList.ListItems[index].quantity )
+              if ( temp.ListItems[index].purchased < temp.ListItems[index].quantity )
               {
-                temp.GroceryList.ListItems[index].purchased++;
+                temp.ListItems[index].purchased++;
                 setContext( temp );
               }
             }}
 
             decreaseClick={ ()=>{
               const temp = {...context};
-              temp.GroceryList.ListItems[index].purchased--;
+              temp.ListItems[index].purchased--;
               setContext( temp );
             }}
 

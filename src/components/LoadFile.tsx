@@ -5,7 +5,7 @@ import {
   GLContext 
 } from './ContextHandler';
 import {
-  AllData 
+  GroceryList 
 } from '../types/types';
 import '../global.css';
 import useStores from '../hooks/useStores';
@@ -36,7 +36,7 @@ export function LoadFile () {
         handle
       ] = await window.showOpenFilePicker( pickerOpts );
       const file = await handle.getFile();
-      const content: AllData = JSON.parse( await file.text() ) ;
+      const content: GroceryList = JSON.parse( await file.text() ) ;
       setContext( content ); 
     } catch ( error ) {
       console.log( 'No List Selected',error );

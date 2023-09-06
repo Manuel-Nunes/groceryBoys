@@ -27,7 +27,7 @@ function useStores(): useStoresResponse {
 
     const tempStores = storeContext.stores.slice();
 
-    context.GroceryList.ListItems.map( ( value ) => {
+    context.ListItems.map( ( value ) => {
 
       const standardizedStore = standardizeName( value.store );
       const storeExists = tempStores.find( ( store ) => { return ( store?.value === standardizedStore ); } );
