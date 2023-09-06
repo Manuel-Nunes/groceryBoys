@@ -1,8 +1,8 @@
 import { ChangeEvent, useContext, useState } from 'react';
 import { GLContext } from '../components/ContextHandler';
 import { ListItem } from '../models/ListItem';
-import { AllData } from '../types/types';
 import { useNavigate } from 'react-router-dom';
+import { GroceryList } from '../types/types';
 
 
 export default function AddEntryPage() {
@@ -18,8 +18,8 @@ export default function AddEntryPage() {
   const navigate = useNavigate();
   const addEntry = ( item: string, quantity: number, price: number, store: string ) => {
     const entry: ListItem = new ListItem( {description:item, quantity:quantity, store:store, price:price, purchased:0} );
-    const data: AllData = { ...context };
-    data.GroceryList.ListItems.push( entry );
+    const data: GroceryList = { ...context };
+    data.ListItems.push( entry );
     setContext( data );
   };
 
