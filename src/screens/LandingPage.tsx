@@ -7,13 +7,13 @@ import { GLContext } from '../components/ContextHandler';
 
 export default function LandingPage() {
   const navigate = useNavigate();
-  const {context, storeContext, setContext} = useContext( GLContext );
+  const {context, storeContext, setContext, setStoreContext} = useContext( GLContext );
 
 
   async function handleCreate() {
     context.ListItems.length = 0;
-    storeContext.stores.length = 0;
-    setContext( context );
+    setContext( {ListItems:[]} );
+    setStoreContext( {stores:[ null ]} );
     navigate( '/list' );
   }
 
