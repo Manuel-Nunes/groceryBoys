@@ -6,7 +6,6 @@ const BigBody = styled.div`
   flex-direction: column;
   min-height: 100vh;
   min-width: 100vw;
-  height: 100vh;
   background-color: var(--regularBackgroundColor);
   color: var(--fontColor);
 `;

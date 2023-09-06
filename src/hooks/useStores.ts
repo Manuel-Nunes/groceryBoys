@@ -1,8 +1,11 @@
 import { useContext, useEffect } from 'react';
 import { GLContext } from '../components/ContextHandler';
+import { GroceryList, Store } from '../types/types';
+import { OutstandingItems, PurchasedItems } from '../utils/Filter';
 
 interface useStoresResponse {
   loadAllStores: () => void;
+  filterByStore: ( store?: Store | null, purchased?: boolean | null ) => GroceryList;
   standardizeName: ( storeName: string ) => string;
 }
 
@@ -27,7 +30,7 @@ function useStores(): useStoresResponse {
     context.GroceryList.ListItems.map( ( value ) => {
 
       const standardizedStore = standardizeName( value.store );
-      const storeExists = tempStores.find( ( store ) => { return ( store.value === standardizedStore ); } );
+      const storeExists = tempStores.find( ( store ) => { return ( store?.value === standardizedStore ); } );
 
       if ( !storeExists ) {
         tempStores.push( {value: standardizedStore, display: value.store} );
@@ -39,8 +42,25 @@ function useStores(): useStoresResponse {
     return ;
   };
 
+  const filterByStore = ( store?: Store | null | undefined, purchased?: boolean | null | undefined ): GroceryList => {
+    let groceryList: GroceryList;
+    if ( purchased !== null && purchased !== undefined ) {
+      groceryList = purchased ? PurchasedItems( context.GroceryList ) : OutstandingItems( context.GroceryList );
+    }
+    else {
+      groceryList = context.GroceryList;
+    }
+
+    if ( store !== null && store !== undefined ) {
+      groceryList = { ListItems: groceryList.ListItems.filter( item => standardizeName( item.store ) === store.value ) };
+    }
+
+    return groceryList;
+  }; 
+
   return ( {
     loadAllStores,
+    filterByStore,
     standardizeName
   } );
 }

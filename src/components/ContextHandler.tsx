@@ -13,7 +13,7 @@ const defaultValue:AllData ={
 };
 
 const defaultStores: StoreContext = {
-  stores: []
+  stores: [ null ]
 };
 
 const tempLook = {
