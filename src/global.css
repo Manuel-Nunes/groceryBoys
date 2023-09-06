@@ -7,8 +7,80 @@
 }
 
 .DefaultButton{
-  background-color: cyan;
-  margin: 5px;
-  padding: 5px;
-  border-radius: 20px 0 20px 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #72C100;
+  color: #fff;
+  border: none;
+  border-radius: 6rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
+body{
+  background-color: #013220;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  min-width: 100%;
+}
+
+form {
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.5em;
+  max-width: 255px;
+}
+
+h1 {
+  display: block;
+  text-align: center;
+  padding-bottom: 20%;
+}
+
+img {
+  margin: 0 auto 10px;
+  display: block;
+}
+
+span {
+  color: #1B6EEA;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+}
+
+input{
+  width: 100%;
+  padding: 10px;
+  padding-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10rem;
+  box-sizing: border-box;
+  display: block;
+  float: left;
+}
+.btnList {
+  list-style-type: none;  
+  display: flex; 
+  flex-direction: column; 
+}
+
+
+.errorLabel {
+  color: red;
+  max-width: 255px;
+  font-size: small;
 }

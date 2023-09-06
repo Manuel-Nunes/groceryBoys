@@ -1,20 +1,30 @@
-import { useContext } from 'react';
-
+import { useContext, useState } from 'react';
 import ListItemDisplay from '../components/ListItemDisplay';
 import Scene from '../components/Scene';
 import { GLContext } from '../components/ContextHandler';
 import { LoadFile } from '../components/LoadFile';
 import { StoreTab } from '../components/StoreTab';
 import useStores from '../hooks/useStores';
+import { Store } from '../types/types';
+import { Tabs } from '../components/Tabs';
 
 function UiTest() {
   const { context, setContext, storeContext} = useContext( GLContext );
-  const { loadAllStores } = useStores();
+  const { filterByStore } = useStores();
+
+  const [store, setStore]= useState<Store | null>();
+
+  const List = filterByStore( store );
 
   return (
     <Scene>
+
+      <Tabs
+        stores={storeContext.stores}
+        onClick={setStore}/>
+        
       {
-        context.ListItems.map( ( value, index )=>{
+        List.ListItems?.map( ( value, index )=>{
           return <ListItemDisplay 
             key={index}
             listData={value}
@@ -37,13 +47,6 @@ function UiTest() {
         } )
       }
       
-      {
-        storeContext.stores.map( ( value,index )=>{
-          return <StoreTab
-            key={`disp${ index }`}
-            {...value}/>;
-        } )
-      }
       
       <LoadFile/>
       

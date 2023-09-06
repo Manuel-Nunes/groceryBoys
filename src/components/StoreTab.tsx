@@ -1,16 +1,28 @@
+import { styled } from 'styled-components';
+
 interface StoreProps {
-  value: string;
-  display: string;
+  value?: string;
+  display?: string;
   key: string;
+  onClick: () => void;
 }
 
 export const StoreTab = ( {
-  value,
-  display
+  value = 'all',
+  display = 'All',
+  onClick
 }: StoreProps ): JSX.Element => {
   return (
-    <p>
-      {`${ value }: ${ display }`}
-    </p>
+    <Tab
+      onClick={onClick}>
+      { display }
+    </Tab>
   );
 };
+
+const Tab = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+`;

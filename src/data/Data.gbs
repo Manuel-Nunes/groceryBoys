@@ -34,6 +34,27 @@
       "store": "PickNPay",
       "price": "99.99",
       "purchased": "0"
+    },{
+      "description" : "Handy Andy Kitchen cleaner",
+      "quantity" : "5",
+      "store" : "AliBaba",
+      "price" : "21.99",
+      "purchased" : "1"
+    },
+    {
+      "description" : "Soap",
+      "quantity" : "5",
+      "store" : "ALIbaba",
+      "price" : "6.99",
+      "purchased" : "1"
+    },
+    {
+      "description": "Bread",
+      "quantity": "6",
+      "store": "alIbaba  ",
+      "price": "20.00",
+      "purchased": "6"
     }
   ]
 }
+
