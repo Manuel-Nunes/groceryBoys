@@ -17,10 +17,10 @@ export function LoadFile () {
   const pickerOpts = {
     types: [
       {
-        description: 'Grocery Boys File',
+        description: 'Text File',
         accept: {
           'text/gbs': [
-            '.gbs'
+            '.txt'
           ],
         },
       },
