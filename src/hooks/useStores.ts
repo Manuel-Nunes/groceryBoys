@@ -27,7 +27,7 @@ function useStores(): useStoresResponse {
 
     const tempStores = storeContext.stores.slice();
 
-    context.ListItems.map( ( value ) => {
+    context.ListItems?.map( ( value ) => {
 
       const standardizedStore = standardizeName( value.store );
       const storeExists = tempStores.find( ( store ) => { return ( store?.value === standardizedStore ); } );
@@ -45,10 +45,10 @@ function useStores(): useStoresResponse {
   const filterByStore = ( store?: Store | null | undefined, purchased?: boolean | null | undefined ): GroceryList => {
     let groceryList: GroceryList;
     if ( purchased !== null && purchased !== undefined ) {
-      groceryList = purchased ? PurchasedItems( context.GroceryList ) : OutstandingItems( context.GroceryList );
+      groceryList = purchased ? PurchasedItems( context ) : OutstandingItems( context );
     }
     else {
-      groceryList = context.GroceryList;
+      groceryList = context;
     }
 
     if ( store !== null && store !== undefined ) {

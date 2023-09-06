@@ -14,7 +14,7 @@ export const Tabs = ( {
 }: TabsProps ): JSX.Element => {
   return (
     <Container>
-      {stores.map( ( value, index ) => (
+      {stores?.map( ( value, index ) => (
         <StoreTab
           key={`tab-${ index }`}
           onClick={() => onClick( value )}

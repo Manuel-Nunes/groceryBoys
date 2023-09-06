@@ -24,7 +24,7 @@ function UiTest() {
         onClick={setStore}/>
         
       {
-        List.ListItems.map( ( value, index )=>{
+        List.ListItems?.map( ( value, index )=>{
           return <ListItemDisplay 
             key={index}
             listData={value}
