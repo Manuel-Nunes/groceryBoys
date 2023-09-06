@@ -13,7 +13,7 @@ const defaultValue:GroceryList ={
 };
 
 const defaultStores: StoreContext = {
-  stores: []
+  stores: [ null ]
 };
 
 const tempLook = {

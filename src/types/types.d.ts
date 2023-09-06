@@ -12,7 +12,7 @@ export interface Store {
 }
 
 export interface StoreContext {
-  stores: Store[];
+  stores: ( Store | null )[];
 }
 export interface GroceryList {
   ListItems: ListData[]
