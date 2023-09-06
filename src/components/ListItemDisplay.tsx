@@ -1,5 +1,5 @@
 import { ListData } from '../types/types';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const ListDataBigBody = styled.div`
   display: grid;

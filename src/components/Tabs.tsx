@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { Store } from '../types/types';
 import { JSXElement } from '@babel/types';
 import { StoreTab } from './StoreTab';
