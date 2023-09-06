@@ -14,10 +14,10 @@ const InternalBody = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
 `;
 
 interface SceneProps {
-  children?: React.ReactNode
   gridTemplate?: string;
 }
 
@@ -25,7 +25,7 @@ function Scene(
   {
     children,
     gridTemplate
-  }: SceneProps 
+  }: React.PropsWithChildren<SceneProps> 
 ) {
   return (
     <BigBody>

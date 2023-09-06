@@ -18,7 +18,6 @@ import {
 import AuthenticatedRoute from './components/auth/AuthenticatedRoute';
 import RegisterPage from './screens/Register';
 import LoginForm from './screens/Login';
-import App from './screens/App';
 
 import UiTest from './screens/UiTest';
 import LandingPage from './screens/LandingPage';
