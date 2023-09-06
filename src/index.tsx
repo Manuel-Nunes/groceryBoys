@@ -22,6 +22,7 @@ import App from './screens/App';
 
 import UiTest from './screens/UiTest';
 import LandingPage from './screens/LandingPage';
+import AddEntryPage from './screens/AddEntry';
 
 const root = ReactDOM.createRoot(
   document.getElementById( 'root' ) as HTMLElement
@@ -35,6 +36,11 @@ root.render(
           <Routes>
             <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/addEntry" element={
+              <AuthenticatedRoute>
+                <AddEntryPage />
+              </AuthenticatedRoute>
+            }/>
             <Route path="/" element={
               <AuthenticatedRoute>
                 <LandingPage />

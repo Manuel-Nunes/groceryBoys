@@ -23,8 +23,10 @@ export default function AddEntryPage() {
     setContext( data );
   };
 
+
   const storeOptions = storeContext.stores
-    .map( value => value.value )
+    .map( value => value?.value )
+    .filter( value => value === null )
     .map( display => <option value={display} key={display}>{display}</option> );
   storeOptions.push( <option value="other" key="other">Other</option> );
 
@@ -53,22 +55,22 @@ export default function AddEntryPage() {
     <section>
       <h1>Add Item Details</h1>
       <form onSubmit={onSubmit}>
-        <label>Item Name:</label>
-        <input type="text" id="item" name="item" onChange={onFieldChange} required/>
-        <br/>
-        <label>Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" value='1' onChange={onFieldChange}/>
-        <br/>
-        <label>Price:</label>
-        <input type="number" id="price" name="price" min="0" value='1' onChange={onFieldChange}/>
-        <br/>
-        <label>Store Name</label>
-        <select name="store" onChange={onOptionChange} required>
-          {storeOptions}
-        </select>
-        {showOption ? <input type="text" id="name" name="name" onChange={onFieldChange} required/> : ( '' )}
-        <br/>
-        <button type="submit">Add Item</button>
+        <label>Item Name:
+          <input type="text" id="item" name="item" onChange={onFieldChange} required/>
+        </label>
+        <label>Quantity:
+          <input type="number" id="quantity" name="quantity" min="1" value='1' onChange={onFieldChange}/>
+        </label>
+        <label>Price:
+          <input type="number" id="price" name="price" min="0" value='1' onChange={onFieldChange}/>
+        </label>
+        <label>Store Name:
+          <select name="store" onChange={onOptionChange} required>
+            {storeOptions}
+          </select>
+          { showOption || storeOptions.length === 1 ? <input type="text" id="name" name="name" onChange={onFieldChange} required/> : ( '' )}
+        </label>
+        <button type="submit" className='DefaultButton'>Add Item</button>
       </form>
     </section>
   );
