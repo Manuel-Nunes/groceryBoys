@@ -7,6 +7,7 @@ import { StoreTab } from '../components/StoreTab';
 import useStores from '../hooks/useStores';
 import { Store } from '../types/types';
 import { Tabs } from '../components/Tabs';
+import { BackButton } from '../components/BackButton';
 
 function UiTest() {
   const { context, setContext, storeContext} = useContext( GLContext );
@@ -50,6 +51,7 @@ function UiTest() {
       
       
       <LoadFile/>
+      <BackButton/>
       
     </Scene>
   );
