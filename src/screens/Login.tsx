@@ -10,7 +10,6 @@ import {
   useNavigate
 } from 'react-router-dom';
 
-
 type CredentialsKeys = keyof Credentials;
 
 export default function LoginPage() {
@@ -56,6 +55,7 @@ export default function LoginPage() {
 
   return (
     <section>
+
       {/* <img src={require( '../Resources/shoppingBasket.png' )} style={{
         width:100
       }}/> */}
