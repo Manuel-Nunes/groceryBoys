@@ -1,8 +1,8 @@
 :root{
   --regularBackgroundColor: #013220;
   --fontColor: white;
-  --purchasedBack: rgb(68, 101, 22);
-  --remainBack: rgb(126, 64, 13);
+  --purchasedBack: rgb(27, 122, 54);
+  --remainBack: #FFFFFF66;
 
 }
 
@@ -15,6 +15,15 @@
   border-radius: 6rem;
   cursor: pointer;
   margin-top: 1rem;
+}
+
+.NavButton{
+  width: 100%;
+  background: #1BFD9CCC;
+  color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .BackButton{

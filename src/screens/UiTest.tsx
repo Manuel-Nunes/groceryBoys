@@ -2,12 +2,13 @@ import { useContext, useState } from 'react';
 import ListItemDisplay from '../components/ListItemDisplay';
 import Scene from '../components/Scene';
 import { GLContext } from '../components/ContextHandler';
-import { LoadFile } from '../components/LoadFile';
-import { StoreTab } from '../components/StoreTab';
 import useStores from '../hooks/useStores';
 import { Store } from '../types/types';
 import { Tabs } from '../components/Tabs';
 import { BackButton } from '../components/BackButton';
+import { styled } from 'styled-components';
+import { useNavigate } from 'react-router';
+import { UtilBar } from '../components/UtilBar';
 
 function UiTest() {
   const { context, setContext, storeContext} = useContext( GLContext );
@@ -17,12 +18,22 @@ function UiTest() {
   const [purchased, setPurchased] = useState<boolean | null>();
 
   const List = filterByStore( store, purchased );
+  const navigate = useNavigate();
 
   return (
     <Scene>
 
+      <UtilBar/>
+
+      <AddItem
+        onClick={() => navigate( '/addEntry' )}>
+        Add Item
+      </AddItem>
+
       <Tabs
+        active={store}
         stores={storeContext.stores}
+        filter={purchased}
         onFilterClick={setPurchased}
         onClick={setStore}/>
       {
@@ -49,12 +60,18 @@ function UiTest() {
         } )
       }
       
-      
-      <LoadFile/>
-      <BackButton/>
-      
     </Scene>
   );
 }
+
+const AddItem = styled.a`
+  text-align: center;
+  max-width: 100vw;
+  width: calc(100% - 4px);
+  background: #1BFD9CCC;
+  border: 2px solid white;
+  border-radius: 4px;
+  padding: 8px 0;
+`;
 
 export default UiTest;
