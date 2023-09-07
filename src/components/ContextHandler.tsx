@@ -1,9 +1,10 @@
 import React, {
-  useState 
+  useState
 } from 'react';
+
 import {
   GroceryList,
-  StoreContext 
+  StoreContext
 } from '../types/types';
 
 const defaultValue:GroceryList ={
@@ -45,7 +46,7 @@ export const ContextHandler: React.FC<PropTypes> = ( { children } ) =>{
       context,
       setContext,
       storeContext,
-      setStoreContext 
+      setStoreContext
     }}>
       {children}
     </GLContext.Provider>

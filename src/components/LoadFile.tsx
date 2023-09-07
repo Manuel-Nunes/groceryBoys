@@ -1,51 +1,41 @@
 import {
-  useContext 
+  useContext
 } from 'react';
+
 import {
-  GLContext 
+  GLContext
 } from './ContextHandler';
+
 import {
-  GroceryList 
-} from '../types/types';
+  useNavigate
+} from 'react-router-dom';
+
+import {
+  LoadGroceryListFile
+} from '../utils/FileUtils';
+
 import '../global.css';
-import { useNavigate } from 'react-router-dom';
 
 export function LoadFile () {
   const navigate = useNavigate();
 
-  const pickerOpts = {
-    types: [
-      {
-        description: 'Text File',
-        accept: {
-          'text/gbs': [
-            '.txt'
-          ],
-        },
-      },
-    ],
-    excludeAcceptAllOption: true,
-    multiple: false,
-  };
-
   const { setContext, setStoreContext } = useContext( GLContext );
 
   const getFile = async ()=>{
-    try {
-      const [
-        handle
-      ] = await window.showOpenFilePicker( pickerOpts );
-      const file = await handle.getFile();
-      const content: GroceryList = JSON.parse( await file.text() ) ;
-      setStoreContext( {stores: [ null ]} );
-      setContext( content ); 
-      navigate( '/list' );
-    } catch ( error ) {
-      console.log( 'No List Selected',error );
+
+    const data = await LoadGroceryListFile();
+
+    if ( !data ) {
+
+      return;
     }
+
+    setStoreContext( {stores: [ null ]} );
+    setContext( data );
+    navigate( '/list' );
   };
 
   return (
-    <button className={'DefaultButton'} onClick={getFile}>Load File</button>
+    <button className={'NavButton'} onClick={getFile}>Load File</button>
   );
 }

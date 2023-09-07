@@ -1,9 +1,11 @@
 import {
-  useContext 
+  useContext
 } from 'react';
+
 import {
-  GLContext 
+  GLContext
 } from './ContextHandler';
+
 import '../global.css';
 
 export function Share () {

@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 interface StoreProps {
   value?: string;
@@ -13,15 +13,15 @@ export const StoreTab = ( {
   onClick,
   active
 }: StoreProps ): JSX.Element => {
-  return ( !active 
+  return ( !active
     ? <Tab
       onClick={onClick}>
-      
+
       { display }
     </Tab>
     : <ActiveTab
       onClick={onClick}>
-      
+
       { display }
     </ActiveTab>
   );
@@ -33,6 +33,7 @@ const Tab = styled.p`
   align-items: center;
   width: fit-content;
   white-space: nowrap;
+  cursor: pointer;
 `;
 
 const ActiveTab = styled.p`
@@ -42,4 +43,6 @@ const ActiveTab = styled.p`
   align-items: center;
   width: fit-content;
   white-space: nowrap;
+  cursor: pointer;
+
 `;
