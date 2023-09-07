@@ -20,6 +20,7 @@ function UiTest() {
     <Scene>
 
       <Tabs
+        active={store}
         stores={storeContext.stores}
         onClick={setStore}/>
         

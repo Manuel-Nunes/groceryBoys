@@ -5,22 +5,38 @@ interface StoreProps {
   display?: string;
   key: string;
   onClick: () => void;
+  active: boolean;
 }
 
 export const StoreTab = ( {
   value = 'all',
   display = 'All',
-  onClick
+  onClick,
+  active
 }: StoreProps ): JSX.Element => {
-  return (
-    <Tab
+  return ( !active 
+    ? <Tab
       onClick={onClick}>
+      
       { display }
     </Tab>
+    : <ActiveTab
+      onClick={onClick}>
+      
+      { display }
+    </ActiveTab>
   );
 };
 
 const Tab = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+`;
+
+const ActiveTab = styled.p`
+  text-decoration: underline;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -6,11 +6,13 @@ import { StoreTab } from './StoreTab';
 interface TabsProps {
   stores: ( Store | null )[];
   onClick: ( store: Store | null ) => void;
+  active: Store | null | undefined;
 }
 
 export const Tabs = ( {
   stores,
-  onClick
+  onClick,
+  active
 }: TabsProps ): JSX.Element => {
   return (
     <Container>
@@ -18,6 +20,7 @@ export const Tabs = ( {
         <StoreTab
           key={`tab-${ index }`}
           onClick={() => onClick( value )}
+          active={value == active}
           {...value}/>
           
       ) )
