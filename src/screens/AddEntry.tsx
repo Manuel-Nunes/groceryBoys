@@ -130,7 +130,7 @@ export default function AddEntryPage() {
             </select>
             { showOption || storeOptions.length === 1 ? <input type="text" id="store" name="store" onChange={onFieldChange} required/> : ( '' )}
           </label>
-          <button type="submit" className='DefaultButton'>Add Item</button>
+          <button type="submit" className='NavButton'>Add Item</button>
         </form>
       </FormSection>
     </Scene>

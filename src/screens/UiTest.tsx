@@ -54,7 +54,6 @@ function UiTest() {
         onClick={() => navigate( '/addEntry' )}>
         Add Item
       </AddItem>
-
       <Tabs
         active={store}
         stores={storeContext.stores}
@@ -67,7 +66,9 @@ function UiTest() {
             key={index}
             listData={value}
             increaseClick={ ()=>{
+
               const temp = {...context};
+
               if ( temp.ListItems[index].purchased < temp.ListItems[index].quantity )
               {
                 temp.ListItems[index].purchased++;
@@ -76,9 +77,14 @@ function UiTest() {
             }}
 
             decreaseClick={ ()=>{
+
               const temp = {...context};
-              temp.ListItems[index].purchased--;
-              setContext( temp );
+
+              if (  temp.ListItems[index].purchased > 0 ) {
+
+                temp.ListItems[index].purchased--;
+                setContext( temp );
+              }
             }}
 
           />;
