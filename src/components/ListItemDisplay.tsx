@@ -170,6 +170,7 @@ function ListItemDisplay(
         <DecreaseButton onClick={decreaseClick} $enabled={ decreaseEnable }/>
 
         <IncreaseButton onClick={increaseClick} $enabled={ increaseEnabled } />
+
       </DecIncHolder>
 
     </ListDataBigBody>
