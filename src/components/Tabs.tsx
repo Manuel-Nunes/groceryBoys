@@ -1,27 +1,30 @@
 import { styled } from 'styled-components';
 import { Store } from '../types/types';
-import { JSXElement } from '@babel/types';
 import { StoreTab } from './StoreTab';
 import { PurchasedTabs } from './PurchasedTabs';
 
 interface TabsProps {
   stores: ( Store | null )[];
-  onClick: ( store: Store | null ) => void;
   active: Store | null | undefined;
+  filter: boolean | null | undefined;
+  onClick: ( store: Store | null ) => void;
   onFilterClick: ( purchased: boolean | null ) => void;
 }
 
 export const Tabs = ( {
   stores,
+  active,
+  filter,
   onClick,
-  onFilterClick,
-  active
+  onFilterClick
 }: TabsProps ): JSX.Element => {
   return (
     <Nav>
+      <Heading>Filter:</Heading>
       <Container>
-        <PurchasedTabs onFilterClick={onFilterClick}/>
+        <PurchasedTabs active={filter} onFilterClick={onFilterClick}/>
       </Container>
+      <Heading>Stores:</Heading>
       <Container>
         {stores?.map( ( value, index ) => (
           <StoreTab
@@ -41,13 +44,12 @@ export const Tabs = ( {
 const Nav = styled.nav`
   display: flex;
   background: #72C100;
-  width: calc( 100% - 16px);
-  height: 60px;
+  max-width: 100vw;
+  width: calc( 100vw - 32px);
+  height: 120px;
   gap: 10px;
-  padding-left: 16px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  text-align: center;
+  padding: 0 16px;
+  text-align: left;
   flex-direction: column;
   justify-content: center;
 
@@ -67,4 +69,9 @@ const Container = styled.section`
   ::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const Heading = styled.p`
+  text-decoration: underline;
+  font-weight: bold;
 `;
