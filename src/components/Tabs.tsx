@@ -19,7 +19,7 @@ export const Tabs = ( {
   onFilterClick
 }: TabsProps ): JSX.Element => {
   return (
-    <Nav>
+    <FilterList>
       <Heading>Filter:</Heading>
       <Container>
         <PurchasedTabs active={filter} onFilterClick={onFilterClick}/>
@@ -37,28 +37,30 @@ export const Tabs = ( {
 
         }
       </Container>
-    </Nav>
+    </FilterList>
   );
 };
 
-const Nav = styled.nav`
+const FilterList = styled.ul`
   display: flex;
   background: #72C100;
   max-width: 100vw;
-  width: calc( 100vw - 32px);
+  width: calc( 100% - 32px);
   height: 120px;
   gap: 10px;
   padding: 0 16px;
   text-align: left;
   flex-direction: column;
   justify-content: center;
+  list-style-type: none;
+  border-radius: 4px;
 
   ::-webkit-scrollbar {
     display: none;
   }
 `;
 
-const Container = styled.section`
+const Container = styled.li`
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
@@ -71,7 +73,7 @@ const Container = styled.section`
   }
 `;
 
-const Heading = styled.p`
+const Heading = styled.li`
   text-decoration: underline;
   font-weight: bold;
 `;

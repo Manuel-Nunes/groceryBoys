@@ -23,6 +23,6 @@ export function Share () {
   }
 
   return (
-    <button className={'DefaultButton'} onClick={handleShare}>Share File</button>
+    <button className={'NavButton'} onClick={handleShare}>Share File</button>
   );
 }

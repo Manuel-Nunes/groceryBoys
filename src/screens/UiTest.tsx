@@ -8,6 +8,7 @@ import { Tabs } from '../components/Tabs';
 import { BackButton } from '../components/BackButton';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router';
+import { UtilBar } from '../components/UtilBar';
 
 function UiTest() {
   const { context, setContext, storeContext} = useContext( GLContext );
@@ -21,6 +22,8 @@ function UiTest() {
 
   return (
     <Scene>
+
+      <UtilBar/>
 
       <AddItem
         onClick={() => navigate( '/addEntry' )}>
@@ -57,8 +60,6 @@ function UiTest() {
         } )
       }
       
-      <BackButton/>
-      
     </Scene>
   );
 }
@@ -66,10 +67,11 @@ function UiTest() {
 const AddItem = styled.a`
   text-align: center;
   max-width: 100vw;
-  width: calc(100vw - 8px);
-  background: #72C100;
-  border-radius: 8px;
+  width: calc(100% - 4px);
+  background: #1BFD9CCC;
+  border: 2px solid white;
+  border-radius: 4px;
   padding: 8px 0;
-  margin: 4px;
 `;
+
 export default UiTest;

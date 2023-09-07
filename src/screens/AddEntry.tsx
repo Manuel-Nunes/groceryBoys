@@ -3,6 +3,9 @@ import { GLContext } from '../components/ContextHandler';
 import { ListItem } from '../models/ListItem';
 import { useNavigate } from 'react-router-dom';
 import { GroceryList } from '../types/types';
+import { UtilBar } from '../components/UtilBar';
+import Scene from '../components/Scene';
+import { styled } from 'styled-components';
 
 
 export default function AddEntryPage() {
@@ -52,27 +55,42 @@ export default function AddEntryPage() {
   };
 
   return (
-    <section>
-      <h1>Add Item Details</h1>
-      <form onSubmit={onSubmit}>
-        <label>Item Name:
-          <input type="text" id="description" name="description" onChange={onFieldChange} required/>
-        </label>
-        <label>Quantity:
-          <input type="number" id="quantity" name="quantity" min="1" value={state.quantity} onChange={onFieldChange}/>
-        </label>
-        <label>Price:
-          <input type="number" id="price" name="price" min="0" value={state.price} onChange={onFieldChange}/>
-        </label>
-        <label>Store Name:
-          <select name="store" onChange={onOptionChange} required>
-            {storeOptions}
-          </select>
-          { showOption || storeOptions.length === 1 ? <input type="text" id="store" name="store" onChange={onFieldChange} required/> : ( '' )}
-        </label>
-        <button type="submit" className='DefaultButton'>Add Item</button>
-      </form>
-    </section>
+    <Scene>
+
+      <UtilBar/>
+
+      <FormSection>
+        <h1>Add Item Details</h1>
+        <form onSubmit={onSubmit}>
+          <label>Item Name:
+            <input type="text" id="description" name="description" onChange={onFieldChange} required/>
+          </label>
+          <label>Quantity:
+            <input type="number" id="quantity" name="quantity" min="1" value={state.quantity} onChange={onFieldChange}/>
+          </label>
+          <label>Price:
+            <input type="number" id="price" name="price" min="0" value={state.price} onChange={onFieldChange}/>
+          </label>
+          <label>Store Name:
+            <select name="store" onChange={onOptionChange} required>
+              {storeOptions}
+            </select>
+            { showOption || storeOptions.length === 1 ? <input type="text" id="store" name="store" onChange={onFieldChange} required/> : ( '' )}
+          </label>
+          <button type="submit" className='DefaultButton'>Add Item</button>
+        </form>
+      </FormSection>
+    </Scene>
   );
 
 }
+
+const FormSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 100%;
+  margin: auto;
+`;
