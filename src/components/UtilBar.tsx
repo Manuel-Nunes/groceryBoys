@@ -9,6 +9,7 @@ import {
 import {
   Share
 } from './Share';
+import SaveFile from './SaveFile';
 
 export const UtilBar = (): JSX.Element => {
   return (
@@ -18,7 +19,7 @@ export const UtilBar = (): JSX.Element => {
 
       <Share/>
 
-      <button className='NavButton'>Save File</button>
+      <SaveFile/>
 
     </Container>
   );

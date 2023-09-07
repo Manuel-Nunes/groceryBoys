@@ -33,6 +33,7 @@ const Tab = styled.p`
   align-items: center;
   width: fit-content;
   white-space: nowrap;
+  cursor: pointer;
 `;
 
 const ActiveTab = styled.p`
@@ -42,4 +43,6 @@ const ActiveTab = styled.p`
   align-items: center;
   width: fit-content;
   white-space: nowrap;
+  cursor: pointer;
+
 `;

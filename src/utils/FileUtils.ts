@@ -13,7 +13,6 @@ export const AcceptedFileTypes:FilePickerAcceptType[]= [
   },
 ];
 
-
 export async function SaveGroceryListFile( data: object, fileName: string = 'GroceryList.gbs' ) : Promise<boolean> {
 
   try {
@@ -35,7 +34,6 @@ export async function SaveGroceryListFile( data: object, fileName: string = 'Gro
 
     return false;
   }
-
 }
 
 export async function LoadGroceryListFile() : Promise<GroceryList | null> {

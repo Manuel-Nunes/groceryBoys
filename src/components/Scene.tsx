@@ -20,7 +20,7 @@ const InternalBody = styled.div`
   flex-direction: column;
 
   @media screen and (min-width: 780px) {
-    width: 80%;
+    max-width: 1000px;
   }
 `;
 
