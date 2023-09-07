@@ -65,11 +65,15 @@ const QuanityButton = styled.button<ButtonProps>`
 const DecreaseButton = styled( QuanityButton )`
   grid-area: Decrease;
   background-image: url('../Resources/ReduceItem.svg');
+  max-width: 50px;
+  max-height: 50px;
 `;
 
 const IncreaseButton = styled( QuanityButton )`
   grid-area: Increase;
   background-image: url('../Resources/IncreaseItem.svg');
+  max-width: 50px;
+  max-height: 50px;
 `;
 
 interface listDataProps{
@@ -118,7 +122,7 @@ function ListItemDisplay(
       <ItemPriceDisplay>
         R {' '}
         {
-          Math.ceil( listData?.price * listData.purchased )
+          Math.ceil( listData?.price )
         }
       </ItemPriceDisplay>
 
