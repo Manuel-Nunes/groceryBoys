@@ -6,6 +6,8 @@ import { LoadFile } from '../components/LoadFile';
 import useStores from '../hooks/useStores';
 import { Store } from '../types/types';
 import { Tabs } from '../components/Tabs';
+import { styled } from 'styled-components';
+import { useNavigate } from 'react-router';
 
 function UiTest() {
   const { context, setContext, storeContext} = useContext( GLContext );
@@ -15,9 +17,15 @@ function UiTest() {
   const [purchased, setPurchased] = useState<boolean | null>();
 
   const List = filterByStore( store, purchased );
+  const navigate = useNavigate();
 
   return (
     <Scene>
+
+      <AddItem
+        onClick={() => navigate( '/addEntry' )}>
+        Add Item
+      </AddItem>
 
       <Tabs
         active={store}
@@ -50,10 +58,18 @@ function UiTest() {
       }
       
       
-      <LoadFile/>
       
     </Scene>
   );
 }
 
+const AddItem = styled.a`
+  text-align: center;
+  max-width: 100vw;
+  width: calc(100vw - 8px);
+  background: #72C100;
+  border-radius: 8px;
+  padding: 8px 0;
+  margin: 4px;
+`;
 export default UiTest;
