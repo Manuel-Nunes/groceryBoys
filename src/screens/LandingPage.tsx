@@ -24,7 +24,7 @@ export default function LandingPage() {
         {/* <img src={require( './shopping-basket.png' )} style={{width:100}}/> */}
         <h1>Create a list of all the items you need!</h1>
         <ul className="btnList">
-          <li><button className='DefaultButton' onClick={handleCreate}>Create List</button></li>
+          <li><button className='NavButton' onClick={handleCreate}>Create List</button></li>
           <li><LoadFile/></li>
         </ul>
       </Section>

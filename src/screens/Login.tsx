@@ -1,13 +1,13 @@
 // import './App.css'
 import '../global.css';
 import {
-  ChangeEvent, FormEvent, useState 
+  ChangeEvent, FormEvent, useState
 } from 'react';
 import {
-  Credentials, useAuth 
+  Credentials, useAuth
 } from '../hooks/useAuth';
 import {
-  useNavigate 
+  useNavigate
 } from 'react-router-dom';
 
 
@@ -36,7 +36,7 @@ export default function LoginPage() {
     } catch ( err ) {
       setError( 'Incorrect username/password' );
     }
-    
+
   }
 
   function handleInputChange( event: ChangeEvent<HTMLInputElement> ) {
@@ -52,12 +52,12 @@ export default function LoginPage() {
     } );
   }
 
-  const gotoSignUpPage = () => navigate( '/register' );    
+  const gotoSignUpPage = () => navigate( '/register' );
 
   return (
     <section>
       {/* <img src={require( '../Resources/shoppingBasket.png' )} style={{
-        width:100 
+        width:100
       }}/> */}
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
@@ -76,7 +76,7 @@ export default function LoginPage() {
             onChange={handleInputChange}
             required />
         </label>
-        <button className='DefaultButton' type="submit">Log in</button>
+        <button className='NavButton' type="submit">Log in</button>
         <label className="errorLabel">{error}</label>
         <p>
           Don't have an account?{' '}
