@@ -8,7 +8,6 @@ import {
   GroceryList 
 } from '../types/types';
 import '../global.css';
-import useStores from '../hooks/useStores';
 import { useNavigate } from 'react-router-dom';
 
 export function LoadFile () {
@@ -29,7 +28,7 @@ export function LoadFile () {
     multiple: false,
   };
 
-  const { setContext } = useContext( GLContext );
+  const { setContext, setStoreContext } = useContext( GLContext );
 
   const getFile = async ()=>{
     try {
@@ -38,6 +37,7 @@ export function LoadFile () {
       ] = await window.showOpenFilePicker( pickerOpts );
       const file = await handle.getFile();
       const content: GroceryList = JSON.parse( await file.text() ) ;
+      setStoreContext( {stores: [ null ]} );
       setContext( content ); 
       navigate( '/list' );
     } catch ( error ) {
