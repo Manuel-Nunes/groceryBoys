@@ -6,14 +6,14 @@ export const AcceptedFileTypes:FilePickerAcceptType[]= [
   {
     description: 'Grocery Boys File',
     accept: {
-      'text/gbs': [
-        '.gbs'
+      'text/plain': [
+        '.txt'
       ],
     },
   },
 ];
 
-export async function SaveGroceryListFile( data: object, fileName: string = 'GroceryList.gbs' ) : Promise<boolean> {
+export async function SaveGroceryListFile( data: object, fileName: string = 'GroceryList.txt' ) : Promise<boolean> {
 
   try {
     const handle = await showSaveFilePicker( {
@@ -40,7 +40,9 @@ export async function LoadGroceryListFile() : Promise<GroceryList | null> {
   try {
     const [
       handle
-    ] = await window.showOpenFilePicker( );
+    ] = await window.showOpenFilePicker( {
+      types: AcceptedFileTypes
+    } );
     const file = await handle.getFile();
     const content: GroceryList = JSON.parse( await file.text() ) ;
 
