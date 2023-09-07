@@ -2,10 +2,10 @@ import { useContext, useState } from 'react';
 import ListItemDisplay from '../components/ListItemDisplay';
 import Scene from '../components/Scene';
 import { GLContext } from '../components/ContextHandler';
-import { LoadFile } from '../components/LoadFile';
 import useStores from '../hooks/useStores';
 import { Store } from '../types/types';
 import { Tabs } from '../components/Tabs';
+import { BackButton } from '../components/BackButton';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router';
 
@@ -57,7 +57,7 @@ function UiTest() {
         } )
       }
       
-      
+      <BackButton/>
       
     </Scene>
   );
