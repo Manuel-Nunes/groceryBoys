@@ -1,11 +1,16 @@
 import {
-  ChangeEvent, FormEvent, useState 
+  ChangeEvent,
+  FormEvent,
+  useState
 } from 'react';
+
 import {
-  Credentials, useAuth 
+  Credentials,
+  useAuth
 } from '../hooks/useAuth';
+
 import {
-  useNavigate 
+  useNavigate
 } from 'react-router-dom';
 
 type CredentialsKeys = keyof Credentials;
@@ -44,10 +49,14 @@ export default function RegisterPage() {
       await auth.signUp( credentials );
       setError( '' );
       setVerifyProcess( true );
-    } catch ( err: any ) {
-      if( err.name === 'InvalidParameterException' ) {
+    } catch ( err: unknown ) {
+      let error = new Error();
+      if ( typeof err !== 'object' )
+        error = ( err as Error );
+
+      if( error?.name === 'InvalidParameterException' ) {
         setError( 'Password must have at least 8 characters, 1  number and 1 special character' );
-      } else if ( err.name === 'UsernameExistsException' ) {
+      } else if ( error?.name === 'UsernameExistsException' ) {
         setError( 'An account with this email already exists.' );
       }
     }
@@ -58,12 +67,16 @@ export default function RegisterPage() {
     try{
       await auth.verifyEmail( credentials.email, OTP );
       navigate( '/login' );
-    } catch ( err: any ) {
-      if( err.name === 'CodeMismatchException' ) {
+    } catch ( err: unknown ) {
+      let error = new Error();
+      if ( typeof err !== 'object' )
+        error = ( err as Error );
+
+      if( error.name === 'CodeMismatchException' ) {
         setError( 'Invalid OTP' );
       }
     }
-      
+
   }
 
   function checkSpecialCharacters( password: string ): boolean {
@@ -102,7 +115,7 @@ export default function RegisterPage() {
     if ( !hasSpecial || !hasCapitals || !hasLength ) {
       setError( errorMessage.slice( 0, -1 ) );
     } else {
-      if ( credentials.email.length !== 0 ) 
+      if ( credentials.email.length !== 0 )
         setDisabled( false );
       setError( '' );
     }
@@ -122,13 +135,13 @@ export default function RegisterPage() {
     } );
   }
 
-  const gotoLoginPage = () => navigate( '/login' );    
+  const gotoLoginPage = () => navigate( '/login' );
 
   return (
     verifyProcess == false ? (
       <section>
         {/* <img src={ require( '../Resources/shoppingBasket.png' )} style={{
-          width:100 
+          width:100
         }}/> */}
         <h1>Register</h1>
         <form onSubmit={handleSubmit}>
@@ -159,7 +172,7 @@ export default function RegisterPage() {
           </span>
         </p>
       </section>
-      
+
     ) : (
       <form onSubmit={verifyAccount}>
           Enter the OTP sent to your email:

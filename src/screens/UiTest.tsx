@@ -1,12 +1,27 @@
-import { useContext, useState } from 'react';
-import ListItemDisplay from '../components/ListItemDisplay';
+import {
+  useContext,
+  useState
+} from 'react';
+
+import {
+  GLContext
+} from '../components/ContextHandler';
+
+import {
+  LoadFile
+} from '../components/LoadFile';
+
+import {
+  Tabs
+} from '../components/Tabs';
+
+import {
+  Store
+} from '../types/types';
+
 import Scene from '../components/Scene';
-import { GLContext } from '../components/ContextHandler';
-import { LoadFile } from '../components/LoadFile';
-import { StoreTab } from '../components/StoreTab';
 import useStores from '../hooks/useStores';
-import { Store } from '../types/types';
-import { Tabs } from '../components/Tabs';
+import ListItemDisplay from '../components/ListItemDisplay';
 
 function UiTest() {
   const { context, setContext, storeContext} = useContext( GLContext );
@@ -26,7 +41,7 @@ function UiTest() {
         onClick={setStore}/>
       {
         List.ListItems?.map( ( value, index )=>{
-          return <ListItemDisplay 
+          return <ListItemDisplay
             key={index}
             listData={value}
             increaseClick={ ()=>{
@@ -47,10 +62,10 @@ function UiTest() {
           />;
         } )
       }
-      
-      
+
+
       <LoadFile/>
-      
+
     </Scene>
   );
 }

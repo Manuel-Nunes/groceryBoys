@@ -8,7 +8,7 @@ interface StoreProps {
 }
 
 export const StoreTab = ( {
-  value = 'all',
+  // value = 'all',
   display = 'All',
   onClick
 }: StoreProps ): JSX.Element => {

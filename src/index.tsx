@@ -1,19 +1,22 @@
-import './global.css';
-
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
 import {
-  AuthProvider
-} from './hooks/useAuth';
-
-import {
-  BrowserRouter, Route, Routes
+  BrowserRouter,
+  Route,
+  Routes
 } from 'react-router-dom';
 
 import {
   ContextHandler
 } from './components/ContextHandler';
+
+import {
+  AuthProvider
+} from './hooks/useAuth';
+
+import './global.css';
+
+import React from 'react';
+
+import ReactDOM from 'react-dom/client';
 
 import AuthenticatedRoute from './components/auth/AuthenticatedRoute';
 import RegisterPage from './screens/Register';
@@ -34,6 +37,7 @@ root.render(
       <ContextHandler>
         <BrowserRouter>
           <Routes>
+            <Route path="/uitest" element={<UiTest/>} />
             <Route path="/dev" element={<ItemMamagement/>} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<RegisterPage />} />

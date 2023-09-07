@@ -1,8 +1,16 @@
 import styled from 'styled-components';
-import { Store } from '../types/types';
-import { JSXElement } from '@babel/types';
-import { StoreTab } from './StoreTab';
-import { PurchasedTabs } from './PurchasedTabs';
+
+import {
+  Store
+} from '../types/types';
+
+import {
+  StoreTab
+} from './StoreTab';
+
+import {
+  PurchasedTabs
+} from './PurchasedTabs';
 
 interface TabsProps {
   stores: ( Store | null )[];
@@ -26,7 +34,7 @@ export const Tabs = ( {
             key={`tab-${ index }`}
             onClick={() => onClick( value )}
             {...value}/>
-            
+
         ) )
 
         }
