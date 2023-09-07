@@ -19,6 +19,18 @@ import {
   Store
 } from '../types/types';
 
+import {
+  useNavigate
+} from 'react-router-dom';
+
+import {
+  UtilBar
+} from '../components/UtilBar';
+
+import {
+  styled
+} from 'styled-components';
+
 import Scene from '../components/Scene';
 import useStores from '../hooks/useStores';
 import ListItemDisplay from '../components/ListItemDisplay';
@@ -31,12 +43,22 @@ function UiTest() {
   const [purchased, setPurchased] = useState<boolean | null>();
 
   const List = filterByStore( store, purchased );
+  const navigate = useNavigate();
 
   return (
     <Scene>
 
+      <UtilBar/>
+
+      <AddItem
+        onClick={() => navigate( '/addEntry' )}>
+        Add Item
+      </AddItem>
+
       <Tabs
+        active={store}
         stores={storeContext.stores}
+        filter={purchased}
         onFilterClick={setPurchased}
         onClick={setStore}/>
       {
@@ -69,5 +91,15 @@ function UiTest() {
     </Scene>
   );
 }
+
+const AddItem = styled.a`
+  text-align: center;
+  max-width: 100vw;
+  width: calc(100% - 4px);
+  background: #1BFD9CCC;
+  border: 2px solid white;
+  border-radius: 4px;
+  padding: 8px 0;
+`;
 
 export default UiTest;

@@ -6,14 +6,20 @@ import {
   GLContext
 } from './ContextHandler';
 
+import {
+  useNavigate
+} from 'react-router-dom';
+
+import {
+  LoadGroceryListFile
+} from '../utils/FileUtils';
+
 import '../global.css';
-import { useNavigate } from 'react-router-dom';
-import { LoadGroceryListFile } from '../utils/FileUtils';
 
 export function LoadFile () {
   const navigate = useNavigate();
 
-  const { setContext } = useContext( GLContext );
+  const { setContext, setStoreContext } = useContext( GLContext );
 
   const getFile = async ()=>{
 
@@ -24,6 +30,7 @@ export function LoadFile () {
       return;
     }
 
+    setStoreContext( {stores: [ null ]} );
     setContext( data );
     navigate( '/list' );
   };
