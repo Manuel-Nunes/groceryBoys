@@ -10,7 +10,7 @@ interface useStoresResponse {
 }
 
 function useStores(): useStoresResponse {
-  const {context, storeContext, setStoreContext} = useContext( GLContext );
+  const {context, storeContext, setStoreContext, setContext} = useContext( GLContext );
 
   const standardizeName = ( storeName: string ): string => {
     return storeName
@@ -27,7 +27,9 @@ function useStores(): useStoresResponse {
 
     const tempStores = storeContext.stores.slice();
 
-    context.ListItems?.map( ( value ) => {
+    const tempContext = context;
+
+    tempContext.ListItems?.map( ( value ) => {
 
       const standardizedStore = standardizeName( value.store );
       const storeExists = tempStores.find( ( store ) => { return ( store?.value === standardizedStore ); } );
@@ -35,9 +37,13 @@ function useStores(): useStoresResponse {
       if ( !storeExists ) {
         tempStores.push( {value: standardizedStore, display: value.store} );
       }
+      else {
+        value.store = storeExists.display;
+      }
 
     } );
     setStoreContext( {stores: tempStores} );
+    setContext( tempContext );
 
     return ;
   };
