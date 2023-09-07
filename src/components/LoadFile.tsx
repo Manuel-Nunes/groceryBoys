@@ -30,7 +30,6 @@ export function LoadFile () {
   };
 
   const { setContext } = useContext( GLContext );
-  const { loadAllStores } = useStores();
 
   const getFile = async ()=>{
     try {

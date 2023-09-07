@@ -2,7 +2,6 @@ import React, {
   useState 
 } from 'react';
 import {
-  Store, 
   GroceryList,
   StoreContext 
 } from '../types/types';

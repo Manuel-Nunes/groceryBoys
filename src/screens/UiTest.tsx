@@ -3,7 +3,6 @@ import ListItemDisplay from '../components/ListItemDisplay';
 import Scene from '../components/Scene';
 import { GLContext } from '../components/ContextHandler';
 import { LoadFile } from '../components/LoadFile';
-import { StoreTab } from '../components/StoreTab';
 import useStores from '../hooks/useStores';
 import { Store } from '../types/types';
 import { Tabs } from '../components/Tabs';
@@ -23,6 +22,7 @@ function UiTest() {
       <Tabs
         active={store}
         stores={storeContext.stores}
+        filter={purchased}
         onFilterClick={setPurchased}
         onClick={setStore}/>
       {

@@ -9,7 +9,6 @@ interface StoreProps {
 }
 
 export const StoreTab = ( {
-  value = 'all',
   display = 'All',
   onClick,
   active
