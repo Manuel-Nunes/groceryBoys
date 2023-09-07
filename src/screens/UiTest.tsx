@@ -13,16 +13,17 @@ function UiTest() {
   const { filterByStore } = useStores();
 
   const [store, setStore]= useState<Store | null>();
+  const [purchased, setPurchased] = useState<boolean | null>();
 
-  const List = filterByStore( store );
+  const List = filterByStore( store, purchased );
 
   return (
     <Scene>
 
       <Tabs
         stores={storeContext.stores}
+        onFilterClick={setPurchased}
         onClick={setStore}/>
-        
       {
         List.ListItems?.map( ( value, index )=>{
           return <ListItemDisplay 
