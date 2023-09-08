@@ -9,8 +9,9 @@ import { styled } from 'styled-components';
 import Image from '../components/Image';
 
 const ButtonDiv = styled.div`
-  height: 10vh;
+  height: 20vh;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: space-between;
 `;

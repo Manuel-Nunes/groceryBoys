@@ -10,11 +10,11 @@ import {
   useNavigate
 } from 'react-router-dom';
 
-import {
-  LoadGroceryListFile
-} from '../utils/FileUtils';
-
 import '../global.css';
+
+import { 
+  GroceryList 
+} from '../types/types';
 
 export function LoadFile () {
   const navigate = useNavigate();
@@ -57,8 +57,8 @@ export function LoadFile () {
 
   return (
     <>
-      <input ref={input} className={'DefaultButton'} id='file' type='file'/>
-      <button className={'DefaultButton'} onClick={getFile}>Submit</button>
+      <input ref={input} className={'NavButton'} id='file' type='file'/>
+      <button className={'NavButton'} onClick={getFile}>Submit</button>
     </>
   );
 }

@@ -13,7 +13,7 @@ export const AcceptedFileTypes:FilePickerAcceptType[]= [
   },
 ];
 
-export async function SaveGroceryListFile( data: object, fileName: string = 'GroceryList.txt' ) : Promise<boolean> {
+export async function SaveGroceryListFile( data: object, fileName = 'GroceryList.txt' ) : Promise<boolean> {
 
   try {
     const handle = await showSaveFilePicker( {
