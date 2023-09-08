@@ -36,6 +36,6 @@ export function LoadFile () {
   };
 
   return (
-    <button className={'NavButton'} onClick={getFile}>Load File</button>
+    <button className={'NavButton PaddedButton'} onClick={getFile}>Load File</button>
   );
 }

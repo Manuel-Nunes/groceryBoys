@@ -27,6 +27,11 @@
   font-size: 1.2em;
 }
 
+.PaddedButton {
+  padding: 5px;
+  margin: 10px;
+}
+
 .BackButton{
   padding: 3px;
   background-color: #72C100;
