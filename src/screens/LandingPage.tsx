@@ -37,7 +37,7 @@ export default function LandingPage() {
         />
         <h1>Create a list of all the items you need!</h1>
         <ButtonDiv>
-          <button className='NavButton' onClick={handleCreate}>Create List</button>
+          <button className='NavButton PaddedButton' onClick={handleCreate}>Create List</button>
           <LoadFile/>
         </ButtonDiv>
       </Section>
