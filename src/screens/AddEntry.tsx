@@ -1,15 +1,42 @@
-import { ChangeEvent, useContext, useState } from 'react';
-import { GLContext } from '../components/ContextHandler';
-import { ListItem } from '../models/ListItem';
-import { useNavigate } from 'react-router-dom';
-import { GroceryList } from '../types/types';
-import { UtilBar } from '../components/UtilBar';
+import {
+  ChangeEvent,
+  useContext,
+  useState
+} from 'react';
+
+import {
+  GLContext
+} from '../components/ContextHandler';
+
+import {
+  ListItem
+} from '../models/ListItem';
+
+import {
+  useNavigate
+} from 'react-router-dom';
+
+import {
+  GroceryList
+} from '../types/types';
+
+import {
+  UtilBar
+} from '../components/UtilBar';
+
 import Scene from '../components/Scene';
-import { styled } from 'styled-components';
+
+import {
+  styled
+} from 'styled-components';
 
 
 export default function AddEntryPage() {
-  const {storeContext, context, setContext} = useContext( GLContext );
+  const {
+    storeContext,
+    context,
+    setContext
+  } = useContext( GLContext );
   const [showOption, setShowOption] = useState( false );
   const [state, setState] = useState<ListItem>( {
     description: '',
@@ -21,8 +48,16 @@ export default function AddEntryPage() {
 
   const navigate = useNavigate();
   const addEntry = ( item: string, quantity: number, price: number, store: string ) => {
-    const entry: ListItem = new ListItem( {description:item, quantity:quantity, store:store, price:price, purchased:0} );
-    const data: GroceryList = { ...context };
+    const entry: ListItem = new ListItem( {
+      description:item,
+      quantity:quantity,
+      store:store,
+      price:price,
+      purchased:0
+    } );
+
+    const data: GroceryList = { ...context};
+
     data.ListItems.push( entry );
     setContext( data );
   };
@@ -30,28 +65,46 @@ export default function AddEntryPage() {
 
   const storeOptions = storeContext.stores
     .filter( store => store?.value !== null )
-    .map( store => <option value={store?.display} key={store?.value}>{store?.display}</option> );
+    .map( store =>
+      <option
+        value={store?.display}
+        key={store?.value}>
+        {store?.display}
+      </option>
+    );
+
   storeOptions.push( <option value="other" key="other">Other</option> );
 
   const onFieldChange = ( event: ChangeEvent<HTMLInputElement> ) => {
     const value: typeof state[keyof typeof state] = event.target.value;
-    setState( { ...state, [event.target.id]: value } );
+    setState( { ...state, [event.target.id]: value
+    } );
+
   };
 
   const onOptionChange = ( event: ChangeEvent<HTMLSelectElement> ) => {
+
     const value: typeof state[keyof typeof state] = event.target.value;
+
     if ( event.target.value == 'other' ) {
       setShowOption( true );
+
     } else {
       setShowOption( false );
     }
-    setState( { ...state, ['store']: value } );
+
+    setState( {
+      ...state,
+      ['store']: value
+    } );
+
   };
 
   const onSubmit = ( event: React.FormEvent<HTMLFormElement> ) => {
     event.preventDefault();
     addEntry( state.description, state.quantity, state.price, state.store );
     navigate( -1 );
+
   };
 
   return (
@@ -77,11 +130,12 @@ export default function AddEntryPage() {
             </select>
             { showOption || storeOptions.length === 1 ? <input type="text" id="store" name="store" onChange={onFieldChange} required/> : ( '' )}
           </label>
-          <button type="submit" className='DefaultButton'>Add Item</button>
+          <button type="submit" className='NavButton'>Add Item</button>
         </form>
       </FormSection>
     </Scene>
   );
+
 
 }
 

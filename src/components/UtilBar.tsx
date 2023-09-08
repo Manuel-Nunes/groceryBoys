@@ -1,18 +1,27 @@
-import { styled } from 'styled-components';
-import { BackButton } from './BackButton';
-import { Share } from './Share';
+import {
+  styled
+} from 'styled-components';
+
+import {
+  BackButton
+} from './BackButton';
+
+import {
+  Share
+} from './Share';
+import SaveFile from './SaveFile';
 
 export const UtilBar = (): JSX.Element => {
-  return ( 
+  return (
     <Container>
 
       <BackButton/>
 
       <Share/>
 
-      <button className='NavButton'>Save File</button>
+      <SaveFile/>
 
-    </Container> 
+    </Container>
   );
 };
 

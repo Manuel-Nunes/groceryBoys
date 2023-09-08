@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const BigBody = styled.div`
   display: flex;
@@ -20,26 +20,25 @@ const InternalBody = styled.div`
   flex-direction: column;
 
   @media screen and (min-width: 780px) {
-    width: 80%;
+    max-width: 1000px;
   }
 `;
 
 interface SceneProps {
-  children?: React.ReactNode
   gridTemplate?: string;
 }
 
-function Scene( 
+function Scene(
   {
     children,
     gridTemplate
-  }: SceneProps 
+  }: React.PropsWithChildren<SceneProps>
 ) {
   return (
     <BigBody>
       {/* <Header></Header> */}
       <InternalBody style={
-        { 
+        {
           display: ( gridTemplate )? 'grid': 'flex',
           gridTemplateAreas: gridTemplate
         }

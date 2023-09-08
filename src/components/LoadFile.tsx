@@ -1,14 +1,20 @@
 import {
   useContext, useRef 
 } from 'react';
+
 import {
-  GLContext 
+  GLContext
 } from './ContextHandler';
+
 import {
-  GroceryList 
-} from '../types/types';
+  useNavigate
+} from 'react-router-dom';
+
+import {
+  LoadGroceryListFile
+} from '../utils/FileUtils';
+
 import '../global.css';
-import { useNavigate } from 'react-router-dom';
 
 export function LoadFile () {
   const navigate = useNavigate();

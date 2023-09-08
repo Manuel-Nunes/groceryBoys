@@ -6,6 +6,14 @@ import { useContext } from 'react';
 import { GLContext } from '../components/ContextHandler';
 import Scene from '../components/Scene';
 import { styled } from 'styled-components';
+import Image from '../components/Image';
+
+const ButtonDiv = styled.div`
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -21,12 +29,17 @@ export default function LandingPage() {
   return (
     <Scene>
       <Section>
-        {/* <img src={require( './shopping-basket.png' )} style={{width:100}}/> */}
+        <Image
+          height='100px'
+          width='100px'
+          src='./Resources/shoppingBasket.png'
+          margin='5vh 0'
+        />
         <h1>Create a list of all the items you need!</h1>
-        <ul className="btnList">
-          <li><button className='DefaultButton' onClick={handleCreate}>Create List</button></li>
-          <li><LoadFile/></li>
-        </ul>
+        <ButtonDiv>
+          <button className='NavButton PaddedButton' onClick={handleCreate}>Create List</button>
+          <LoadFile/>
+        </ButtonDiv>
       </Section>
     </Scene>
   );
@@ -34,4 +47,8 @@ export default function LandingPage() {
 
 const Section = styled.section`
   margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
