@@ -1,5 +1,5 @@
 import {
-  useContext 
+  useContext, useRef 
 } from 'react';
 import {
   GLContext 
@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 
 export function LoadFile () {
   const navigate = useNavigate();
+
+  const input = useRef<HTMLInputElement>( null );
 
   const pickerOpts = {
     types: [
@@ -32,11 +34,13 @@ export function LoadFile () {
 
   const getFile = async ()=>{
     try {
-      const [
-        handle
-      ] = await window.showOpenFilePicker( pickerOpts );
-      const file = await handle.getFile();
-      const content: GroceryList = JSON.parse( await file.text() ) ;
+      console.log( input );
+      const file = input.current?.files?.[0];
+      console.log( file );
+      let content: GroceryList = {ListItems: []};
+      if ( file !== undefined ) {
+        content = JSON.parse( await file.text() ) ;
+      }
       setStoreContext( {stores: [ null ]} );
       setContext( content ); 
       navigate( '/list' );
@@ -46,6 +50,9 @@ export function LoadFile () {
   };
 
   return (
-    <button className={'DefaultButton'} onClick={getFile}>Load File</button>
+    <>
+      <input ref={input} className={'DefaultButton'} id='file' type='file'/>
+      <button className={'DefaultButton'} onClick={getFile}>Submit</button>
+    </>
   );
 }
